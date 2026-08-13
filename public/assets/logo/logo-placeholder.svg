@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120">
+  <rect width="520" height="120" fill="none"/>
+  <g fill="#f5f7fa">
+    <text x="8" y="70" font-family="Georgia, serif" font-size="54">Luminous Alley</text>
+  </g>
+  <circle cx="470" cy="36" r="4" fill="#d7a85a"/>
+  <path d="M470 20v32M454 36h32" stroke="#d7a85a" stroke-width="1" opacity=".9"/>
+</svg>

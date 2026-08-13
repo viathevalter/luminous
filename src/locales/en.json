@@ -1,0 +1,234 @@
+{
+  "nav": {
+    "home": "Home",
+    "industries": "Industries",
+    "workforce": "Workforce",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "OIL & GAS WORKFORCE SOLUTIONS",
+    "title": "The workforce behind critical industrial projects.",
+    "description": "Qualified technical teams for oil, gas, petrochemical and industrial projects, backed by extensive experience across Europe.",
+    "primary": "REQUEST WORKFORCE",
+    "secondary": "EXPLORE CAPABILITIES",
+    "location": "EUROPEAN EXPERIENCE · INTERNATIONAL CAPABILITY",
+    "scroll": "Scroll to explore",
+    "beat1": "THE RIGHT PEOPLE.",
+    "beat2": "THE RIGHT SKILLS.",
+    "beat3": "THE RIGHT EXPERIENCE.",
+    "beat4": "READY FOR THE NEXT PROJECT.",
+    "subBeat4": "European experience. International capability."
+  },
+  "workforce": {
+    "eyebrow": "OUR WORKFORCE",
+    "title": "Specialized people for demanding industrial environments.",
+    "description": "Our network brings together qualified professionals with experience in construction, maintenance, shutdowns and industrial operations.",
+    "microcopy": "SKILLED WORKFORCE",
+    "finalMessage": "ONE NETWORK. MULTIPLE SKILLS. READY FOR INDUSTRY.",
+    "roles": [
+      {
+        "title": "WELDERS",
+        "subtitle": "TIG · MIG/MAG · MMA",
+        "description": "Qualified welders for piping, structural fabrication, maintenance and industrial construction."
+      },
+      {
+        "title": "PIPEFITTERS",
+        "subtitle": "Industrial Piping · Fabrication · Assembly",
+        "description": "Experienced pipefitters for fabrication, installation and assembly of industrial piping systems."
+      },
+      {
+        "title": "BOILERMAKERS",
+        "subtitle": "Fabrication · Assembly · Industrial Components",
+        "description": "Qualified boilermakers for fabrication, assembly and maintenance of industrial metal components."
+      },
+      {
+        "title": "INDUSTRIAL MECHANICS",
+        "subtitle": "Maintenance · Installation · Alignment",
+        "description": "Industrial mechanics for equipment installation, maintenance, mechanical assembly and alignment."
+      },
+      {
+        "title": "ELECTRICIANS",
+        "subtitle": "Industrial Electrical Systems · Installation · Maintenance",
+        "description": "Qualified electricians for industrial electrical installations, maintenance and technical operations."
+      },
+      {
+        "title": "SUPERVISORS & TEAM LEADERS",
+        "subtitle": "Coordination · Technical Supervision · Site Support",
+        "description": "Experienced supervisors and team leaders supporting project coordination, workforce organization and site operations."
+      }
+    ]
+  },
+  "industries": {
+    "eyebrow": "INDUSTRIES",
+    "title": "Built for demanding industrial environments.",
+    "description": "Luminous provides qualified technical workforce for complex industrial projects where safety, experience and execution matter.",
+    "finalBanner": "ONE INDUSTRIAL PARTNER. MULTIPLE SECTORS.",
+    "sectors": [
+      {
+        "id": "oil-gas",
+        "number": "01",
+        "title": "OIL & GAS",
+        "description": "Qualified technical workforce for construction, maintenance, expansion and shutdown projects across the oil and gas industry.",
+        "tags": ["Piping", "Welding", "Mechanical", "Maintenance", "Shutdowns"]
+      },
+      {
+        "id": "petrochemical",
+        "number": "02",
+        "title": "PETROCHEMICAL",
+        "description": "Technical professionals for petrochemical plants, industrial piping, equipment installation and maintenance operations.",
+        "tags": ["Industrial Piping", "Mechanical Assembly", "Maintenance", "Fabrication"]
+      },
+      {
+        "id": "refineries",
+        "number": "03",
+        "title": "REFINERIES",
+        "description": "Workforce solutions for refinery maintenance, turnaround, shutdown, expansion and industrial installation projects.",
+        "tags": ["Turnarounds", "Shutdowns", "Maintenance", "Installation"]
+      },
+      {
+        "id": "energy",
+        "number": "04",
+        "title": "ENERGY",
+        "description": "Qualified technical teams supporting construction, installation and maintenance projects across the energy sector.",
+        "tags": ["Mechanical", "Electrical", "Installation", "Maintenance"]
+      },
+      {
+        "id": "shipyards",
+        "number": "05",
+        "title": "SHIPYARDS & MARINE",
+        "description": "Technical workforce for shipbuilding, steelwork, piping, maintenance and mechanical assembly projects.",
+        "tags": ["Steelwork", "Piping", "Welding", "Mechanical"]
+      },
+      {
+        "id": "construction",
+        "number": "06",
+        "title": "INDUSTRIAL CONSTRUCTION",
+        "description": "Qualified teams for structural fabrication, industrial piping, mechanical assembly and complex installation projects.",
+        "tags": ["Fabrication", "Structures", "Piping", "Assembly"]
+      }
+    ]
+  },
+  "delivery": {
+    "eyebrow": "FOR COMPANIES",
+    "title": "More than recruitment. Industrial workforce delivery.",
+    "description": "We support industrial companies throughout the workforce process — from understanding technical requirements to selecting, preparing and supporting qualified professionals for the project.",
+    "microcopy": "WORKFORCE PROCESS",
+    "steps": [
+      {
+        "number": "01",
+        "title": "PROJECT REQUIREMENTS",
+        "description": "We understand the technical profiles, project location, schedule, duration and workforce requirements."
+      },
+      {
+        "number": "02",
+        "title": "TECHNICAL SELECTION",
+        "description": "We identify professionals whose experience, qualifications and technical skills match the project requirements."
+      },
+      {
+        "number": "03",
+        "title": "DOCUMENTATION",
+        "description": "We organize and verify the documentation required for each professional and project."
+      },
+      {
+        "number": "04",
+        "title": "WORKFORCE PREPARATION",
+        "description": "Selected professionals receive the project information and preparation required before deployment."
+      },
+      {
+        "number": "05",
+        "title": "MOBILITY & LOGISTICS",
+        "description": "When required, we support travel, accommodation and workforce logistics according to project conditions."
+      },
+      {
+        "number": "06",
+        "title": "PROJECT FOLLOW-UP",
+        "description": "Our team maintains operational communication and workforce follow-up throughout the assignment."
+      }
+    ],
+    "ctaHeading": "TELL US WHAT YOUR PROJECT NEEDS",
+    "ctaButton": "REQUEST WORKFORCE",
+    "impactHeadline": "WHEN INDUSTRY CAN'T WAIT, EXPERIENCE MATTERS.",
+    "impactText": "From individual specialists to complete technical teams, Luminous helps industrial companies access the skills required to keep projects moving."
+  },
+  "europeanExperience": {
+    "eyebrow": "EUROPEAN EXPERIENCE",
+    "title": "Experience built across industrial Europe.",
+    "description": "Our workforce model has been shaped by the requirements of industrial projects across multiple European markets — combining technical expertise, mobility, organization and operational reliability.",
+    "countries": [
+      { "code": "PT", "name": "PORTUGAL" },
+      { "code": "ES", "name": "SPAIN" },
+      { "code": "FR", "name": "FRANCE" },
+      { "code": "BE", "name": "BELGIUM" },
+      { "code": "IT", "name": "ITALY" },
+      { "code": "DE", "name": "GERMANY" }
+    ],
+    "pillars": [
+      {
+        "number": "01",
+        "title": "TECHNICAL EXPERTISE",
+        "description": "Skilled workforce across welding, piping, mechanical, electrical and industrial assembly disciplines."
+      },
+      {
+        "number": "02",
+        "title": "WORKFORCE MOBILITY",
+        "description": "Experience supporting teams operating across different locations, projects and industrial environments."
+      },
+      {
+        "number": "03",
+        "title": "OPERATIONAL ORGANIZATION",
+        "description": "Structured processes for workforce selection, preparation, documentation and project follow-up."
+      },
+      {
+        "number": "04",
+        "title": "INDUSTRIAL ADAPTABILITY",
+        "description": "A flexible workforce model designed to respond to different project requirements and technical environments."
+      }
+    ],
+    "internationalEyebrow": "INTERNATIONAL CAPABILITY",
+    "internationalTitle": "European experience without borders.",
+    "internationalDescription": "The same workforce model developed through European industrial projects provides a strong foundation for supporting companies facing complex workforce requirements in new international markets.",
+    "impactStatement": "BUILT IN EUROPE.\nREADY FOR THE NEXT PROJECT.",
+    "ctaTitle": "DISCUSS YOUR PROJECT",
+    "ctaSupporting": "Tell us what workforce your project requires.",
+    "ctaButton": "CONTACT OUR TEAM"
+  },
+  "about": {
+    "eyebrow": "ABOUT LUMINOUS",
+    "title": "Industrial workforce built around experience.",
+    "p1": "Luminous specializes in providing qualified technical professionals for industrial companies operating in demanding environments.",
+    "p2": "Our experience across European projects has allowed us to develop a flexible workforce model focused on technical quality, organization, mobility and operational response.",
+    "p3": "From individual specialists to complete technical teams, we help industrial companies access the people they need to keep projects moving."
+  },
+  "careers": {
+    "eyebrow": "JOIN OUR WORKFORCE",
+    "title": "Your experience can take you further.",
+    "description": "Join our network of qualified industrial professionals and access opportunities across different projects and European markets.",
+    "profiles": [
+      "WELDERS",
+      "PIPEFITTERS",
+      "BOILERMAKERS",
+      "INDUSTRIAL MECHANICS",
+      "ELECTRICIANS",
+      "SUPERVISORS",
+      "OTHER TECHNICAL PROFILES"
+    ],
+    "cta": "SUBMIT YOUR CV"
+  },
+  "finalCta": {
+    "eyebrow": "LET'S BUILD THE RIGHT TEAM",
+    "title": "Your next project starts with the right people.",
+    "description": "Tell us what professionals you need, where the project is located and when you need them.",
+    "primary": "REQUEST WORKFORCE",
+    "secondary": "CONTACT OUR TEAM"
+  },
+  "footer": {
+    "navTitle": "NAVIGATION",
+    "indTitle": "INDUSTRIES",
+    "contactTitle": "CONTACT",
+    "rights": "© 2026 Luminous. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookies"
+  }
+}

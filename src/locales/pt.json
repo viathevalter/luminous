@@ -1,0 +1,234 @@
+{
+  "nav": {
+    "home": "Início",
+    "industries": "Setores",
+    "workforce": "Profissionais",
+    "about": "Sobre nós",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "eyebrow": "SOLUÇÕES DE MÃO DE OBRA PARA OIL & GAS",
+    "title": "As equipas por trás dos grandes projetos industriais.",
+    "description": "Equipas técnicas qualificadas para projetos de petróleo, gás, petroquímica e indústria, apoiadas por uma sólida experiência em toda a Europa.",
+    "primary": "SOLICITAR PROFISSIONAIS",
+    "secondary": "VER CAPACIDADES",
+    "location": "EXPERIÊNCIA EUROPEIA · CAPACIDADE INTERNACIONAL",
+    "scroll": "Deslize para explorar",
+    "beat1": "AS PESSOAS CERTAS.",
+    "beat2": "AS COMPETÊNCIAS CERTAS.",
+    "beat3": "A EXPERIÊNCIA CERTA.",
+    "beat4": "PRONTOS PARA O PRÓXIMO PROJETO.",
+    "subBeat4": "Experiência europeia. Capacidade internacional."
+  },
+  "workforce": {
+    "eyebrow": "A NOSSA EQUIPA TÉCNICA",
+    "title": "Profissionais especializados para ambientes industriais exigentes.",
+    "description": "A nossa rede reúne profissionais qualificados com experiência em construção, manutenção, paragens industriais e operações técnicas.",
+    "microcopy": "EQUIPA ESPECIALIZADA",
+    "finalMessage": "UMA REDE. MÚLTIPLAS COMPETÊNCIAS. PREPARADA PARA A INDÚSTRIA.",
+    "roles": [
+      {
+        "title": "SOLDADORES",
+        "subtitle": "TIG · MIG/MAG · MMA",
+        "description": "Soldadores qualificados para tubagem, fabricação estrutural, manutenção e construção industrial."
+      },
+      {
+        "title": "TUBISTAS",
+        "subtitle": "Tubagem Industrial · Fabricação · Montagem",
+        "description": "Profissionais experientes em fabricação, instalação e montagem de sistemas de tubagem industrial."
+      },
+      {
+        "title": "CALDEIREIROS",
+        "subtitle": "Fabricação · Montagem · Componentes Industriais",
+        "description": "Caldeireiros qualificados para fabricação, montagem e manutenção de componentes metálicos industriais."
+      },
+      {
+        "title": "MECÂNICOS INDUSTRIAIS",
+        "subtitle": "Manutenção · Instalação · Alinhamento",
+        "description": "Mecânicos industriais para instalação de equipamentos, manutenção, montagem mecânica e alinhamento."
+      },
+      {
+        "title": "ELETRICISTAS",
+        "subtitle": "Sistemas Elétricos Industriais · Instalação · Manutenção",
+        "description": "Eletricistas qualificados para instalações elétricas industriais, manutenção e operações técnicas."
+      },
+      {
+        "title": "SUPERVISORES E CHEFES DE EQUIPA",
+        "subtitle": "Coordenação · Supervisão Técnica · Apoio em Obra",
+        "description": "Profissionais experientes para coordenação de projetos, organização de equipas e acompanhamento operacional."
+      }
+    ]
+  },
+  "industries": {
+    "eyebrow": "SETORES",
+    "title": "Preparados para ambientes industriais exigentes.",
+    "description": "A Luminous disponibiliza profissionais técnicos qualificados para projetos industriais complexos, onde segurança, experiência e capacidade de execução são essenciais.",
+    "finalBanner": "UM PARCEIRO INDUSTRIAL. MÚLTIPLOS SETORES.",
+    "sectors": [
+      {
+        "id": "oil-gas",
+        "number": "01",
+        "title": "PETRÓLEO & GÁS",
+        "description": "Profissionais técnicos qualificados para projetos de construção, manutenção, expansão e paragens programadas no setor de petróleo e gás.",
+        "tags": ["Tubagem", "Soldadura", "Mecânica", "Manutenção", "Paragens"]
+      },
+      {
+        "id": "petrochemical",
+        "number": "02",
+        "title": "PETROQUÍMICA",
+        "description": "Profissionais técnicos para instalações petroquímicas, sistemas de tubagem industrial, montagem de equipamentos e operações de manutenção.",
+        "tags": ["Tubagem Industrial", "Montagem Mecânica", "Manutenção", "Fabricação"]
+      },
+      {
+        "id": "refineries",
+        "number": "03",
+        "title": "REFINARIAS",
+        "description": "Soluções de mão de obra para manutenção, turnarounds, paragens, expansão e instalação industrial em refinarias.",
+        "tags": ["Turnarounds", "Paragens Programadas", "Manutenção", "Instalação"]
+      },
+      {
+        "id": "energy",
+        "number": "04",
+        "title": "ENERGIA",
+        "description": "Equipas técnicas qualificadas para projetos de construção, instalação e manutenção no setor da energia.",
+        "tags": ["Mecânica", "Eletricidade", "Instalação", "Manutenção"]
+      },
+      {
+        "id": "shipyards",
+        "number": "05",
+        "title": "ESTALEIROS & NAVAL",
+        "description": "Profissionais técnicos para construção naval, estruturas metálicas, tubagem, manutenção e montagem mecânica.",
+        "tags": ["Estruturas Metálicas", "Tubagem", "Soldadura", "Mecânica"]
+      },
+      {
+        "id": "construction",
+        "number": "06",
+        "title": "CONSTRUÇÃO INDUSTRIAL",
+        "description": "Equipas qualificadas para fabricação estrutural, tubagem industrial, montagem mecânica e projetos complexos de instalação.",
+        "tags": ["Fabricação", "Estruturas", "Tubagem", "Montagem"]
+      }
+    ]
+  },
+  "delivery": {
+    "eyebrow": "PARA EMPRESAS",
+    "title": "Mais do que recrutamento. Soluções completas de mão de obra industrial.",
+    "description": "Apoiamos empresas industriais em todo o processo de workforce — desde a compreensão das necessidades técnicas até à seleção, preparação e acompanhamento de profissionais qualificados para cada projeto.",
+    "microcopy": "PROCESSO DE WORKFORCE",
+    "steps": [
+      {
+        "number": "01",
+        "title": "NECESSIDADES DO PROJETO",
+        "description": "Analisamos os perfis técnicos, localização, calendário, duração e necessidades de mão de obra do projeto."
+      },
+      {
+        "number": "02",
+        "title": "SELEÇÃO TÉCNICA",
+        "description": "Identificamos profissionais cuja experiência, qualificações e competências técnicas correspondem às necessidades do projeto."
+      },
+      {
+        "number": "03",
+        "title": "DOCUMENTAÇÃO",
+        "description": "Organizamos e verificamos a documentação necessária para cada profissional e projeto."
+      },
+      {
+        "number": "04",
+        "title": "PREPARAÇÃO DA EQUIPA",
+        "description": "Os profissionais selecionados recebem as informações e preparação necessárias antes do início do projeto."
+      },
+      {
+        "number": "05",
+        "title": "MOBILIDADE & LOGÍSTICA",
+        "description": "Quando necessário, apoiamos viagens, alojamento e logística das equipas de acordo com as condições do projeto."
+      },
+      {
+        "number": "06",
+        "title": "ACOMPANHAMENTO DO PROJETO",
+        "description": "A nossa equipa mantém comunicação operacional e acompanhamento dos profissionais durante toda a execução."
+      }
+    ],
+    "ctaHeading": "DIGA-NOS O QUE O SEU PROJETO PRECISA",
+    "ctaButton": "SOLICITAR PROFISSIONAIS",
+    "impactHeadline": "QUANDO A INDÚSTRIA NÃO PODE ESPERAR, A EXPERIÊNCIA FAZ A DIFERENÇA.",
+    "impactText": "Desde profissionais individuais até equipas técnicas completas, a Luminous ajuda empresas industriais a encontrar as competências necessárias para manter os projetos em movimento."
+  },
+  "europeanExperience": {
+    "eyebrow": "EXPERIÊNCIA EUROPEIA",
+    "title": "Experiência construída na indústria europeia.",
+    "description": "O nosso modelo de workforce foi desenvolvido a partir das exigências de projetos industriais em vários mercados europeus, combinando competência técnica, mobilidade, organização e fiabilidade operacional.",
+    "countries": [
+      { "code": "PT", "name": "PORTUGAL" },
+      { "code": "ES", "name": "ESPANHA" },
+      { "code": "FR", "name": "FRANÇA" },
+      { "code": "BE", "name": "BÉLGICA" },
+      { "code": "IT", "name": "ITÁLIA" },
+      { "code": "DE", "name": "ALEMANHA" }
+    ],
+    "pillars": [
+      {
+        "number": "01",
+        "title": "COMPETÊNCIA TÉCNICA",
+        "description": "Profissionais qualificados nas áreas de soldadura, tubagem, mecânica, elétrica e montagem industrial."
+      },
+      {
+        "number": "02",
+        "title": "MOBILIDADE DE EQUIPAS",
+        "description": "Experiência no apoio a equipas que trabalham em diferentes localizações, projetos e ambientes industriais."
+      },
+      {
+        "number": "03",
+        "title": "ORGANIZAÇÃO OPERACIONAL",
+        "description": "Processos estruturados para seleção, preparação, documentação e acompanhamento das equipas."
+      },
+      {
+        "number": "04",
+        "title": "ADAPTAÇÃO INDUSTRIAL",
+        "description": "Um modelo flexível de workforce preparado para responder a diferentes exigências de projeto e ambientes técnicos."
+      }
+    ],
+    "internationalEyebrow": "CAPACIDADE INTERNACIONAL",
+    "internationalTitle": "Experiência europeia sem fronteiras.",
+    "internationalDescription": "O mesmo modelo de workforce desenvolvido em projetos industriais europeus cria uma base sólida para apoiar empresas com necessidades complexas de mão de obra em novos mercados internacionais.",
+    "impactStatement": "CONSTRUÍDA NA EUROPA.\nPREPARADA PARA O PRÓXIMO PROJETO.",
+    "ctaTitle": "FALE-NOS DO SEU PROJETO",
+    "ctaSupporting": "Diga-nos que profissionais o seu projeto necessita.",
+    "ctaButton": "CONTACTAR A NOSSA EQUIPA"
+  },
+  "about": {
+    "eyebrow": "SOBRE A LUMINOUS",
+    "title": "Mão de obra industrial construída com base na experiência.",
+    "p1": "A Luminous é especializada no fornecimento de profissionais técnicos qualificados para empresas industriais que operam em ambientes exigentes.",
+    "p2": "A nossa experiência em projetos europeus permitiu desenvolver um modelo de workforce flexível, focado em qualidade técnica, organização, mobilidade e capacidade de resposta operacional.",
+    "p3": "Desde profissionais individuais até equipas técnicas completas, ajudamos empresas industriais a encontrar as pessoas certas para manter os seus projetos em movimento."
+  },
+  "careers": {
+    "eyebrow": "JUNTE-SE À NOSSA EQUIPA",
+    "title": "A sua experiência pode levá-lo mais longe.",
+    "description": "Junte-se à nossa rede de profissionais industriais qualificados e tenha acesso a oportunidades em diferentes projetos e mercados europeus.",
+    "profiles": [
+      "SOLDADORES",
+      "TUBISTAS",
+      "CALDEIREIROS",
+      "MECÂNICOS INDUSTRIAIS",
+      "ELETRICISTAS",
+      "SUPERVISORES",
+      "OUTROS PERFIS TÉCNICOS"
+    ],
+    "cta": "ENVIAR CV"
+  },
+  "finalCta": {
+    "eyebrow": "VAMOS CONSTRUIR A EQUIPA CERTA",
+    "title": "O seu próximo projeto começa com as pessoas certas.",
+    "description": "Diga-nos que profissionais precisa, onde está localizado o projeto e quando necessita da equipa.",
+    "primary": "SOLICITAR PROFISSIONAIS",
+    "secondary": "CONTACTAR A NOSSA EQUIPA"
+  },
+  "footer": {
+    "navTitle": "NAVEGAÇÃO",
+    "indTitle": "SETORES",
+    "contactTitle": "CONTACTO",
+    "rights": "© 2026 Luminous. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "cookies": "Cookies"
+  }
+}

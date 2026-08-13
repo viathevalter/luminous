@@ -1,0 +1,225 @@
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+type StepData = {
+  number: string
+  title: string
+  description: string
+}
+
+export function WorkforceDelivery() {
+  const { t } = useTranslation()
+  const sectionRef = useRef<HTMLElement>(null)
+  const [activeStepIndex, setActiveStepIndex] = useState(0)
+
+  const steps = t('delivery.steps', { returnObjects: true }) as StepData[]
+  const eyebrow = t('delivery.eyebrow')
+  const title = t('delivery.title')
+  const description = t('delivery.description')
+  const microcopy = t('delivery.microcopy')
+  const ctaHeading = t('delivery.ctaHeading')
+  const ctaButton = t('delivery.ctaButton')
+  const impactHeadline = t('delivery.impactHeadline')
+  const impactText = t('delivery.impactText')
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia()
+
+      // Desktop scrubbed & pinned ScrollTrigger section (>= 901px, short ~250vh duration)
+      mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+        // Initial state: Step 01 is 100% active, steps 02..06 start with lower opacity
+        gsap.set('.del-step-0', { opacity: 1, autoAlpha: 1 })
+        steps.slice(1).forEach((_, i) => {
+          const idx = i + 1
+          gsap.set(`.del-step-${idx}`, { opacity: 0.35, autoAlpha: 1 })
+        })
+
+        // Master Timeline pinned for 1800px (short elegant scroll duration)
+        const masterTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 84px',
+            end: '+=1800',
+            pin: true,
+            scrub: 0.5,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const p = self.progress
+              const rawIdx = Math.floor(p * (steps.length || 6))
+              const idx = Math.min(Math.max(0, rawIdx), (steps.length || 6) - 1)
+              setActiveStepIndex(idx)
+            },
+          },
+        })
+
+        // Progressively highlight steps 0 to 5 along the timeline
+        const total = steps.length || 6
+        steps.forEach((_, i) => {
+          const startR = (i / total) * 0.9
+          if (i > 0) {
+            masterTl.to(`.del-step-${i}`, { opacity: 1, autoAlpha: 1, duration: 0.1 }, startR)
+          }
+          if (i < total - 1) {
+            masterTl.to(`.del-step-${i}`, { opacity: 0.45, duration: 0.1 }, startR + 0.14)
+          }
+        })
+      })
+
+      // Mobile / Tablet stacked animation (< 901px)
+      mm.add('(max-width: 900px)', () => {
+        gsap.utils.toArray<HTMLElement>('.del-mobile-step').forEach((item) => {
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 88%',
+              },
+            }
+          )
+        })
+      })
+
+      setTimeout(() => ScrollTrigger.refresh(), 100)
+
+      return () => mm.revert()
+    }, section)
+
+    return () => ctx.revert()
+  }, [steps.length])
+
+  return (
+    <section ref={sectionRef} id="delivery" className="delivery-scroll-section">
+      {/* Desktop Sticky Viewport */}
+      <div className="del-desktop-viewport">
+        <div className="site-container del-desktop-layout">
+          {/* Left Column (45%): B2B Positioning Header & CTA */}
+          <div className="del-left-col">
+            <div className="section-heading del-heading">
+              <p className="eyebrow">{eyebrow}</p>
+              <h2>
+                {title.split('\n').map((line, idx) => (
+                  <span key={idx}>
+                    {line}
+                    {idx === 0 && <br />}
+                  </span>
+                ))}
+              </h2>
+              <p className="del-description">{description}</p>
+            </div>
+
+            <div className="del-cta-block">
+              <p className="del-cta-label">{ctaHeading}</p>
+              <a className="btn btn-primary" href="#contact">
+                {ctaButton} <span className="btn-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column (55%): Connected 6-Step Process Flow */}
+          <div className="del-right-col">
+            <div className="del-process-header">
+              <span className="del-microcopy">{microcopy}</span>
+              <div className="del-process-counter">
+                <span>0{activeStepIndex + 1}</span>
+                <span className="del-sep">/</span>
+                <span>0{steps.length || 6}</span>
+              </div>
+            </div>
+
+            <div className="del-steps-container">
+              {/* Connected Line Background */}
+              <div className="del-connecting-line" aria-hidden="true">
+                <div
+                  className="del-line-progress"
+                  style={{
+                    height: `${((activeStepIndex + 1) / (steps.length || 6)) * 100}%`,
+                  }}
+                />
+              </div>
+
+              {Array.isArray(steps) &&
+                steps.map((step, i) => {
+                  const isActive = i === activeStepIndex
+                  const isCompleted = i < activeStepIndex
+                  return (
+                    <div
+                      key={step.number || i}
+                      className={`del-step-item del-step-${i} ${isActive ? 'is-active' : ''} ${
+                        isCompleted ? 'is-completed' : ''
+                      }`}
+                    >
+                      <div className="del-step-indicator">
+                        <span className="del-step-num">{step.number}</span>
+                        <div className="del-step-dot" />
+                      </div>
+                      <div className="del-step-content">
+                        <h3 className="del-step-title">{step.title}</h3>
+                        <p className="del-step-desc">{step.description}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Block ("WHEN INDUSTRY CAN'T WAIT") */}
+        <div className="del-impact-block site-container">
+          <div className="del-impact-inner">
+            <h3>{impactHeadline}</h3>
+            <p>{impactText}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile & Tablet Stacked Process List (< 901px) */}
+      <div className="del-mobile-list site-container">
+        <div className="section-heading">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title.replace('\n', ' ')}</h2>
+          <p>{description}</p>
+        </div>
+
+        <div className="del-mobile-steps-wrapper">
+          <div className="del-mobile-line" />
+          {Array.isArray(steps) &&
+            steps.map((step) => (
+              <div key={step.number} className="del-mobile-step">
+                <div className="del-mobile-num-badge">{step.number}</div>
+                <div className="del-mobile-step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        <div className="del-mobile-cta">
+          <h3>{ctaHeading}</h3>
+          <a className="btn btn-primary" href="#contact">
+            {ctaButton} <span className="btn-arrow">→</span>
+          </a>
+        </div>
+
+        <div className="del-mobile-impact">
+          <h3>{impactHeadline}</h3>
+          <p>{impactText}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
