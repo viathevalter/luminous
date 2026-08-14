@@ -108,20 +108,18 @@ export function Industries() {
           },
         })
 
-        // Animate SVG pipeline stroke-dashoffset to draw from entry point (0, 200) UP to top-left -> top -> right -> bottom -> bottom-left, closing fully by progress 0.78 (before sector 06)
+        // Animate SVG pipeline stroke-dashoffset forward along the path: (-380, 200) -> (0, 200) -> (0, 12) -> top -> right -> bottom -> (0, 200), closing fully on sector 06
         if (pathRef.current) {
-          const totalLength = pathRef.current.getTotalLength() || 2260
-          const entryLength = 380
-          const frameLength = Math.max(0, totalLength - entryLength)
+          const pathLength = pathRef.current.getTotalLength() || 2260
 
           gsap.set(pathRef.current, {
-            strokeDasharray: totalLength,
-            strokeDashoffset: frameLength,
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength,
           })
 
           masterTl.to(
             pathRef.current,
-            { strokeDashoffset: 0, ease: 'none', duration: 0.78 },
+            { strokeDashoffset: 0, ease: 'none', duration: 0.85 },
             0
           )
         }
@@ -352,7 +350,6 @@ export function Industries() {
                   <circle cx="500" cy="12" r="4.5" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="500" cy="438" r="4.5" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="12" cy="450" r="4.5" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="438" r="4.5" fill={activeIndex >= 5 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                 </svg>
               </div>
             </div>
