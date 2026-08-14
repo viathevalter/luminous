@@ -108,11 +108,20 @@ export function Industries() {
           },
         })
 
-        // Animate SVG pipeline stroke-dashoffset to reach 0 by progress 0.82 (so frame is 100% closed on sector 06)
+        // Animate SVG pipeline stroke-dashoffset to draw from entry point (0, 200) UP to top-left -> top -> right -> bottom -> bottom-left, closing at 06
         if (pathRef.current) {
+          const totalLength = pathRef.current.getTotalLength() || 2260
+          const entryLength = 380
+          const frameLength = Math.max(0, totalLength - entryLength)
+
+          gsap.set(pathRef.current, {
+            strokeDasharray: totalLength,
+            strokeDashoffset: frameLength,
+          })
+
           masterTl.to(
             pathRef.current,
-            { strokeDashoffset: 0, ease: 'none', duration: 0.82 },
+            { strokeDashoffset: 0, ease: 'none', duration: 0.84 },
             0
           )
         }
@@ -316,7 +325,7 @@ export function Industries() {
                   {/* Background Technical Path */}
                   <path
                     className="ind-pipe-bg"
-                    d="M -380 160 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 170"
+                    d="M -380 200 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
                     stroke="rgba(255, 255, 255, 0.15)"
                     strokeWidth="3"
                     vectorEffect="non-scaling-stroke"
@@ -327,7 +336,7 @@ export function Industries() {
                   <path
                     ref={pathRef}
                     className="ind-pipe-active"
-                    d="M -380 160 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 170"
+                    d="M -380 200 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
                     stroke="var(--accent)"
                     strokeWidth="3.5"
                     vectorEffect="non-scaling-stroke"
@@ -336,13 +345,13 @@ export function Industries() {
                     style={{ filter: 'drop-shadow(0 0 6px rgba(215, 168, 90, 0.7))' }}
                   />
                   {/* Technical Nodes along exact outer image border */}
-                  <circle cx="-380" cy="160" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="-380" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="0" cy="12" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="250" cy="0" r="4.5" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="500" cy="12" r="4.5" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="500" cy="438" r="4.5" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="12" cy="450" r="4.5" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="170" r="4.5" fill={activeIndex >= 5 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                 </svg>
               </div>
             </div>
