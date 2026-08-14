@@ -20,8 +20,8 @@ export function HeroScroll() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Pinned GSAP ScrollTrigger Storytelling across all screen sizes
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Desktop: Pinned GSAP ScrollTrigger Storytelling (>= 769px)
+      mm.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
         // Video currentTime scrub if video exists
         if (video) {
           const syncVideo = () => {
@@ -89,7 +89,9 @@ export function HeroScroll() {
         <video
           ref={videoRef}
           className="hero-media"
+          autoPlay
           muted
+          loop
           playsInline
           preload="metadata"
           poster="/assets/hero/hero-poster.png"

@@ -33,8 +33,8 @@ export function WorkforceDelivery() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Scrubbed & pinned ScrollTrigger section across all screen sizes
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Desktop scrubbed & pinned ScrollTrigger section (>= 901px, short ~250vh duration)
+      mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
         // Initial state: Step 01 is 100% active, steps 02..06 start with lower opacity
         gsap.set('.del-step-0', { opacity: 1, autoAlpha: 1 })
         steps.slice(1).forEach((_, i) => {
