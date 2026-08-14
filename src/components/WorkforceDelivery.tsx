@@ -74,41 +74,6 @@ export function WorkforceDelivery() {
         })
       })
 
-      // Mobile / Tablet pinned storytelling (<= 900px)
-      mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
-        gsap.set('.del-step-0', { opacity: 1, autoAlpha: 1 })
-        steps.slice(1).forEach((_, i) => {
-          const idx = i + 1
-          gsap.set(`.del-step-${idx}`, { opacity: 0.35, autoAlpha: 1 })
-        })
-
-        const masterTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70px',
-            end: '+=1200',
-            pin: true,
-            scrub: 0.5,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const p = self.progress
-              const rawIdx = Math.floor(p * (steps.length || 6))
-              const idx = Math.min(Math.max(0, rawIdx), (steps.length || 6) - 1)
-              setActiveStepIndex(idx)
-            },
-          },
-        })
-
-        const total = steps.length || 6
-        steps.forEach((_, i) => {
-          const startR = (i / total) * 0.9
-          if (i > 0) {
-            masterTl.to(`.del-step-${i}`, { opacity: 1, autoAlpha: 1, duration: 0.1 }, startR)
-          }
-        })
-      })
-
       setTimeout(() => ScrollTrigger.refresh(), 100)
 
       return () => mm.revert()
