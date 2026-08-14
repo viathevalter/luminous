@@ -15,12 +15,12 @@ interface IndustrySectorConfig {
 }
 
 const industrySectors: IndustrySectorConfig[] = [
-  { id: 'oil-gas', number: '01', label: 'OIL & GAS', webp: '/assets/industries/oil-gas.webp', png: '/assets/industries/oil-gas.png' },
-  { id: 'petrochemical', number: '02', label: 'PETROCHEMICAL', webp: '/assets/industries/petrochemical.webp', png: '/assets/industries/petrochemical.png' },
-  { id: 'refineries', number: '03', label: 'REFINERIES', webp: '/assets/industries/refineries.webp', png: '/assets/industries/refineries.png' },
-  { id: 'energy', number: '04', label: 'ENERGY', webp: '/assets/industries/energy.webp', png: '/assets/industries/energy.png' },
-  { id: 'shipyards', number: '05', label: 'SHIPYARDS & MARINE', webp: '/assets/industries/shipyards.webp', png: '/assets/industries/shipyards.png' },
-  { id: 'construction', number: '06', label: 'INDUSTRIAL CONSTRUCTION', webp: '/assets/industries/industrial-construction.webp', png: '/assets/industries/industrial-construction.png' },
+  { id: 'oil-gas', number: '01', label: 'OIL & GAS', webp: '/assets/industries/oil-gas.png', png: '/assets/industries/oil-gas.png' },
+  { id: 'petrochemical', number: '02', label: 'PETROCHEMICAL', webp: '/assets/industries/petrochemical.png', png: '/assets/industries/petrochemical.png' },
+  { id: 'refineries', number: '03', label: 'REFINERIES', webp: '/assets/industries/refineries.png', png: '/assets/industries/refineries.png' },
+  { id: 'energy', number: '04', label: 'ENERGY', webp: '/assets/industries/energy.png', png: '/assets/industries/energy.png' },
+  { id: 'shipyards', number: '05', label: 'SHIPYARDS & MARINE', webp: '/assets/industries/shipyards.png', png: '/assets/industries/shipyards.png' },
+  { id: 'construction', number: '06', label: 'INDUSTRIAL CONSTRUCTION', webp: '/assets/industries/industrial-construction.png', png: '/assets/industries/industrial-construction.png' },
 ]
 
 type SectorData = {
