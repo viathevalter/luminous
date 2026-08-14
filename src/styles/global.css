@@ -2164,64 +2164,209 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
   .wf-mobile-list,
   .ind-mobile-list,
   .del-mobile-list {
-    display: flex !important;
-    flex-direction: column;
-    gap: 40px;
-    padding: 60px 0;
-  }
-
-  .wf-mobile-item,
-  .ind-mobile-item {
-    border: 1px solid var(--line);
-    background: var(--panel);
-    overflow: hidden;
-    border-radius: 6px;
-    padding: 16px;
-  }
-
-  .wf-mobile-media,
-  .ind-mobile-media {
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-    border-radius: 4px;
-    margin-bottom: 16px;
+    display: block !important;
     position: relative;
-    background: #040d16;
+    padding-top: 36px;
+    padding-bottom: 60px;
   }
 
-  .wf-mobile-media img,
-  .ind-mobile-media img {
+  .wf-mobile-heading,
+  .ind-mobile-heading {
+    margin-bottom: 24px;
+  }
+
+  /* Sticky Image Area (< 769px) */
+  .wf-mobile-sticky-frame,
+  .ind-mobile-sticky-frame {
+    position: sticky;
+    top: 70px;
+    height: clamp(48svh, 52svh, 55svh);
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #040d16;
+    border: 1px solid var(--border);
+    z-index: 20;
+    margin-bottom: 24px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .wf-mobile-sticky-img-wrap,
+  .ind-mobile-sticky-img-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+
+  .wf-mobile-sticky-img-wrap.active,
+  .ind-mobile-sticky-img-wrap.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .wf-mobile-sticky-img,
+  .ind-mobile-sticky-img {
     width: 100%;
     height: 100%;
     object-fit: cover !important;
     object-position: center top !important;
   }
 
-  .wf-mobile-title,
-  .ind-mobile-title {
-    font-family: var(--font-display);
-    font-size: 1.45rem;
-    font-weight: 500;
-    color: #ffffff;
+  .wf-mobile-sticky-overlay,
+  .ind-mobile-sticky-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(4, 13, 22, 0.85) 0%, transparent 65%);
+  }
+
+  .wf-mobile-sticky-badge,
+  .ind-mobile-sticky-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(8, 23, 37, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .wf-mobile-sticky-badge .badge-num,
+  .ind-mobile-sticky-badge .badge-num {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Content Blocks Container with Thin Left Vertical Line */
+  .wf-mobile-blocks,
+  .ind-mobile-blocks {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 16px;
+  }
+
+  /* Thin Left Vertical Line (< 769px) */
+  .wf-mobile-blocks::before,
+  .ind-mobile-blocks::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: #263746; /* Steel Gray */
+  }
+
+  /* Content Block Styling */
+  .wf-mobile-block,
+  .ind-mobile-block {
+    position: relative;
+    min-height: 60vh;
+    padding: 24px 16px 36px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    opacity: 0.4;
+  }
+
+  .wf-mobile-block.active,
+  .ind-mobile-block.active {
+    opacity: 1;
+  }
+
+  /* Active Indicator Line Segment on Left Border */
+  .wf-mobile-block::before,
+  .ind-mobile-block::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 16px;
+    bottom: 16px;
+    width: 2px;
+    background: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .wf-mobile-block.active::before,
+  .ind-mobile-block.active::before {
+    background: var(--accent); /* Luminous Orange #FFB42B */
+  }
+
+  .wf-mobile-block-num,
+  .ind-mobile-block-num {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
     margin-bottom: 4px;
   }
 
-  .wf-mobile-specs,
-  .ind-mobile-specs {
-    font-size: 0.76rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  .wf-mobile-block-title,
+  .ind-mobile-block-title {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
   }
 
-  .wf-mobile-desc,
-  .ind-mobile-desc {
-    font-size: 0.88rem;
-    line-height: 1.45;
-    color: var(--muted);
-    margin: 0;
+  .wf-mobile-block.active .wf-mobile-block-title,
+  .ind-mobile-block.active .ind-mobile-block-title {
+    color: var(--accent);
+  }
+
+  .wf-mobile-block-specs,
+  .ind-mobile-block-specs {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .wf-mobile-block-desc,
+  .ind-mobile-block-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .ind-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .ind-tag-pill {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(13, 28, 42, 0.8);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .wf-mobile-final,
+  .ind-mobile-final {
+    text-align: center;
+    padding: 48px 0 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
   }
 }
 
@@ -2236,4 +2381,11 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .wf-mobile-sticky-img-wrap,
+  .ind-mobile-sticky-img-wrap,
+  .wf-mobile-block,
+  .ind-mobile-block {
+    transition: none !important;
+    transform: none !important;
+  }
 }
