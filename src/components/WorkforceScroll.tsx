@@ -135,9 +135,14 @@ export function WorkforceScroll() {
         })
 
         // Final message banner (0.96 to 1.00)
+        masterTl.to(
+          '.wf-progress-bar',
+          { opacity: 0, autoAlpha: 0, duration: 0.02 },
+          0.94
+        )
         masterTl.fromTo(
           '.wf-final-banner',
-          { opacity: 0, autoAlpha: 0, y: 35 },
+          { opacity: 0, autoAlpha: 0, y: 20 },
           { opacity: 1, autoAlpha: 1, y: 0, duration: 0.03 },
           0.96
         )
@@ -194,19 +199,12 @@ export function WorkforceScroll() {
                       key={profile?.id || i}
                       className={`wf-card-item wf-card-${i} ${isActive ? 'is-active' : ''}`}
                     >
-                      {/* Background Watermark Number */}
-                      <span className="wf-watermark-num" aria-hidden="true">
-                        {profile?.number}
-                      </span>
-
-                      <p className="wf-microcopy">
-                        {microcopy} / {profile?.number}
-                      </p>
-
-                      <div className="wf-number-badge">
-                        <span className="wf-current-num">{profile?.number}</span>
-                        <span className="wf-num-sep">/</span>
-                        <span className="wf-total-num">0{workforceProfiles.length}</span>
+                      <div className="wf-card-meta">
+                        <span className="wf-microcopy">{microcopy}</span>
+                        <span className="wf-meta-sep">•</span>
+                        <span className="wf-number-badge">
+                          {profile?.number} / 0{workforceProfiles.length}
+                        </span>
                       </div>
 
                       <h3 className="wf-role-title">{role.title}</h3>

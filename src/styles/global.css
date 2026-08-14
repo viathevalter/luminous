@@ -296,17 +296,17 @@ p { color: var(--muted); line-height: 1.7; }
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding-top: 30px;
-    padding-bottom: 24px;
+    justify-content: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   .wf-desktop-layout {
     display: grid;
-    grid-template-columns: minmax(340px, 0.40fr) minmax(520px, 0.60fr);
-    gap: 64px;
+    grid-template-columns: minmax(380px, 0.44fr) minmax(460px, 0.56fr);
+    gap: 40px;
     align-items: center;
-    height: calc(100% - 130px);
+    height: 100%;
     width: 100%;
   }
 
@@ -319,14 +319,27 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-heading {
-    max-width: 680px;
-    margin-bottom: 20px;
+    max-width: 620px;
+    margin-bottom: 14px;
     transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .wf-heading h2 {
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .wf-heading p:last-child {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    max-width: 480px;
   }
 
   .wf-cards-stage {
     position: relative;
-    height: 220px;
+    height: auto;
+    min-height: 200px;
   }
 
   /* Only ONE active profile card visible at a time */
@@ -347,74 +360,63 @@ p { color: var(--muted); line-height: 1.7; }
     pointer-events: auto;
   }
 
-  /* Background Watermark Number */
-  .wf-watermark-num {
-    position: absolute;
-    top: -45px;
-    left: -15px;
-    font-size: 9.5rem;
-    font-family: Georgia, 'Times New Roman', serif;
-    color: rgba(255, 255, 255, 0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    font-weight: 700;
+  .wf-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 2;
   }
 
   .wf-microcopy {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent);
     font-weight: 700;
-    margin-bottom: 8px;
-    position: relative;
-    z-index: 2;
+    margin-bottom: 0;
+  }
+
+  .wf-meta-sep {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.35);
   }
 
   .wf-number-badge {
-    font-size: 2.2rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     color: var(--accent);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .wf-num-sep, .wf-total-num {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0;
   }
 
   .wf-role-title {
-    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
     font-family: Georgia, 'Times New Roman', serif;
     font-weight: 400;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     letter-spacing: -.02em;
     position: relative;
     z-index: 2;
   }
 
   .wf-role-specs {
-    font-size: .88rem;
+    font-size: .8rem;
     color: var(--accent);
-    letter-spacing: .12em;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     font-weight: 600;
     position: relative;
     z-index: 2;
   }
 
   .wf-role-desc {
-    font-size: 1.02rem;
-    line-height: 1.7;
+    font-size: 0.92rem;
+    line-height: 1.5;
     color: var(--muted);
-    max-width: 480px;
+    max-width: 460px;
     position: relative;
     z-index: 2;
   }
@@ -423,7 +425,7 @@ p { color: var(--muted); line-height: 1.7; }
     display: flex;
     gap: 12px;
     align-items: center;
-    margin-top: 24px;
+    margin-top: 16px;
   }
 
   .wf-progress-step {
@@ -463,7 +465,7 @@ p { color: var(--muted); line-height: 1.7; }
   .wf-media-frame {
     position: relative;
     width: 100%;
-    height: clamp(360px, 60vh, 560px);
+    height: clamp(320px, 54vh, 500px);
     overflow: hidden;
     background: #0D1B28;
     border: 1px solid var(--line);
@@ -549,12 +551,17 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-final-banner {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     text-align: center;
-    padding: 12px 0;
+    padding: 16px 0;
     opacity: 0;
     visibility: hidden;
-    position: relative;
     z-index: 10;
+    pointer-events: none;
   }
 
   .wf-final-banner h3 {
