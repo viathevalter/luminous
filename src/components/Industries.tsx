@@ -108,13 +108,13 @@ export function Industries() {
           },
         })
 
-        // Animate SVG pipeline stroke-dashoffset forward along the path: (-380, 200) -> (0, 200) -> (0, 12) -> top -> right -> bottom -> (0, 200), closing fully on sector 06
+        // Animate SVG frame loop path starting at (0, 200) UP to top-left (0, 12) -> top -> right -> bottom -> bottom-left, closing fully at (0, 200) on sector 06
         if (pathRef.current) {
-          const pathLength = pathRef.current.getTotalLength() || 2260
+          const frameLength = pathRef.current.getTotalLength() || 1840
 
           gsap.set(pathRef.current, {
-            strokeDasharray: pathLength,
-            strokeDashoffset: pathLength,
+            strokeDasharray: frameLength,
+            strokeDashoffset: frameLength,
           })
 
           masterTl.to(
@@ -330,11 +330,21 @@ export function Industries() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  {/* Active Highlighted Gold Path */}
+                  {/* Active Gold Connector Line from left col to frame entry point */}
+                  <path
+                    className="ind-pipe-active-connector"
+                    d="M -380 200 H 0"
+                    stroke="var(--accent)"
+                    strokeWidth="3.5"
+                    vectorEffect="non-scaling-stroke"
+                    strokeLinecap="round"
+                    style={{ filter: 'drop-shadow(0 0 6px rgba(215, 168, 90, 0.7))' }}
+                  />
+                  {/* Active Highlighted Gold Frame Loop */}
                   <path
                     ref={pathRef}
-                    className="ind-pipe-active"
-                    d="M -380 200 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
+                    className="ind-pipe-active-frame"
+                    d="M 0 200 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
                     stroke="var(--accent)"
                     strokeWidth="3.5"
                     vectorEffect="non-scaling-stroke"
