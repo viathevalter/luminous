@@ -77,6 +77,35 @@ export function HeroScroll() {
         tl.fromTo('.hero-beat--4', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.08 }, 0.78)
       })
 
+      // Mobile: Compact Pinned ScrollTrigger Storytelling (<= 768px)
+      mm.add('(max-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=1000',
+            pin: true,
+            scrub: 0.5,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        })
+
+        tl.to(introRef.current, { opacity: 0, autoAlpha: 0, y: -25, duration: 0.12 }, 0.04)
+        tl.to('.scroll-cue', { opacity: 0, autoAlpha: 0, duration: 0.08 }, 0.02)
+
+        tl.fromTo('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: 25 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.18)
+        tl.to('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: -20, duration: 0.06 }, 0.32)
+
+        tl.fromTo('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: 25 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.38)
+        tl.to('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: -20, duration: 0.06 }, 0.52)
+
+        tl.fromTo('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: 25 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.58)
+        tl.to('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: -20, duration: 0.06 }, 0.72)
+
+        tl.fromTo('.hero-beat--4', { opacity: 0, autoAlpha: 0, y: 25 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.08 }, 0.78)
+      })
+
       return () => mm.revert()
     }, section)
 

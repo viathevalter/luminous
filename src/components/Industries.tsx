@@ -185,22 +185,49 @@ export function Industries() {
         )
       })
 
-      // Mobile / Tablet stacked list animation (< 901px)
-      mm.add('(max-width: 900px)', () => {
-        gsap.utils.toArray<HTMLElement>('.ind-mobile-item').forEach((item) => {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 25 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              scrollTrigger: {
-                trigger: item,
-                start: 'top 85%',
-              },
-            }
-          )
+      // Mobile / Tablet pinned storytelling (<= 900px)
+      mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
+        gsap.set('.ind-card-0', { opacity: 1, autoAlpha: 1, y: 0 })
+        gsap.set('.ind-img-0', { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)' })
+
+        industrySectors.slice(1).forEach((_, i) => {
+          const idx = i + 1
+          gsap.set(`.ind-card-${idx}`, { opacity: 0, autoAlpha: 0, y: 20 })
+          gsap.set(`.ind-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.03, clipPath: 'inset(100% 0 0 0)' })
+        })
+
+        const masterTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 70px',
+            end: '+=1600',
+            pin: true,
+            scrub: 0.5,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const p = self.progress
+              let idx = 0
+              if (p < 0.16) idx = 0
+              else if (p < 0.32) idx = 1
+              else if (p < 0.48) idx = 2
+              else if (p < 0.64) idx = 3
+              else if (p < 0.80) idx = 4
+              else idx = 5
+              setActiveIndex(idx)
+            },
+          },
+        })
+
+        industrySectors.slice(1).forEach((_, i) => {
+          const idx = i + 1
+          const prevIdx = i
+          const startR = (i / 5) * 0.76 + 0.05
+
+          masterTl.to(`.ind-card-${prevIdx}`, { opacity: 0, autoAlpha: 0, y: -15, duration: 0.06 }, startR)
+          masterTl.to(`.ind-img-${prevIdx}`, { opacity: 0, autoAlpha: 0, duration: 0.06 }, startR)
+          masterTl.fromTo(`.ind-card-${idx}`, { opacity: 0, autoAlpha: 0, y: 20 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, startR + 0.03)
+          masterTl.fromTo(`.ind-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.03, clipPath: 'inset(100% 0 0 0)' }, { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)', duration: 0.08 }, startR + 0.03)
         })
       })
 
