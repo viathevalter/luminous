@@ -18,7 +18,13 @@ export function Footer() {
         {/* Col 1: Brand & Subtitle */}
         <div className="footer-col brand-col">
           <a className="footer-brand" href="#top" aria-label="Luminous home">
-            <span className="brand-wordmark">LUMINOUS</span>
+            <img
+              src="/assets/logo/luminous-logo.svg"
+              alt="Luminous"
+              className="footer-logo"
+              width="175"
+              height="75"
+            />
           </a>
           <p className="footer-tagline">Industrial Workforce Solutions</p>
           <p className="footer-subtext">European experience. International capability.</p>

@@ -19,9 +19,14 @@ export function Header() {
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="site-container header-inner">
-        {/* TODO: replace temporary wordmark with final Luminous logo. */}
         <a className="brand" href="#top" aria-label="Luminous home">
-          <span className="brand-wordmark">LUMINOUS</span>
+          <img
+            src="/assets/logo/luminous-logo.svg"
+            alt="Luminous"
+            className="brand-logo"
+            width="155"
+            height="66"
+          />
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#top">{t('nav.home')}</a>

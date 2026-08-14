@@ -84,7 +84,13 @@ export function AboutLuminous() {
               // TODO: replace team placeholder with final Luminous team asset.
               <div className="about-placeholder-card">
                 <div className="about-placeholder-center">
-                  <span className="about-placeholder-logo">LUMINOUS</span>
+                  <img
+                    src="/assets/logo/luminous-logo.svg"
+                    alt="Luminous"
+                    className="about-placeholder-logo-img"
+                    width="160"
+                    height="68"
+                  />
                   <span className="about-placeholder-sub">FINAL LUMINOUS TEAM ASSET PENDING</span>
                 </div>
               </div>
