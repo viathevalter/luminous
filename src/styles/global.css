@@ -1,14 +1,32 @@
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #f5f7fa;
-  background: #06111e;
+  /* Official Luminous Palette */
+  --color-accent: #FFB42B;
+  --color-accent-hover: #FFC45C;
+
+  --color-bg: #06111B;
+  --color-bg-secondary: #081725;
+  --color-surface: #0D1C2A;
+
+  --color-text: #F5F7F8;
+  --color-text-muted: #8E9AA5;
+  --color-border: #263746;
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", Arial, sans-serif;
+
+  /* Internal Aliases */
+  --bg: var(--color-bg);
+  --panel: var(--color-surface);
+  --text: var(--color-text);
+  --muted: var(--color-text-muted);
+  --line: var(--color-border);
+  --accent: var(--color-accent);
+
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
   font-synthesis: none;
-  --bg: #06111e;
-  --panel: #0a1726;
-  --text: #f5f7fa;
-  --muted: #aab4c0;
-  --line: rgba(255, 255, 255, 0.14);
-  --accent: #d7a85a;
 }
 
 * { box-sizing: border-box; }
@@ -43,24 +61,24 @@ button { font: inherit; }
 
 h1, h2, h3, p { margin-top: 0; }
 h1 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 4.8vw, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -.035em;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
   max-width: 740px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 h2 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.5vw, 4.2rem);
-  line-height: 1.05;
-  letter-spacing: -.03em;
-  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-weight: 500;
   max-width: 850px;
 }
 
-p { color: var(--muted); line-height: 1.7; }
+p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sans); }
 
 /* Header Component */
 .site-header {
@@ -75,9 +93,9 @@ p { color: var(--muted); line-height: 1.7; }
 }
 
 .site-header.scrolled {
-  background: rgba(4, 12, 20, 0.84);
+  background: rgba(6, 17, 27, 0.88);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-inner {
@@ -89,11 +107,11 @@ p { color: var(--muted); line-height: 1.7; }
 
 .brand { display: flex; align-items: center; }
 .brand-wordmark {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   letter-spacing: 0.16em;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 600;
+  color: var(--color-text);
   text-transform: uppercase;
 }
 
@@ -183,16 +201,38 @@ p { color: var(--muted); line-height: 1.7; }
   gap: 10px;
   min-height: 52px;
   padding: 0 28px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   text-transform: uppercase;
   letter-spacing: .08em;
+  font-family: var(--font-sans);
   font-size: .78rem;
   font-weight: 600;
-  transition: transform .25s ease, background-color .25s ease, border-color .25s ease;
+  transition: transform .25s ease, background-color .25s ease, border-color .25s ease, color .25s ease;
 }
 
-.btn-primary { background: var(--accent); color: #07111d; border-color: var(--accent); }
-.btn-secondary { background: rgba(6, 17, 30, .4); backdrop-filter: blur(10px); color: #fff; }
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-bg);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
 
 .btn .btn-arrow { display: inline-block; transition: transform .25s ease; }
 .btn:hover { transform: translateY(-2px); }
@@ -221,7 +261,7 @@ p { color: var(--muted); line-height: 1.7; }
   opacity: 0;
   visibility: hidden;
   color: #fff;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.6rem, 5.2vw, 5.2rem);
   line-height: 1.05;
   letter-spacing: -.03em;
@@ -230,7 +270,7 @@ p { color: var(--muted); line-height: 1.7; }
 
 .hero-beat--4 .hero-beat-title {
   font-size: clamp(2.5rem, 5.2vw, 5.2rem);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   line-height: 1.05;
   color: #ffffff;
   margin-bottom: 12px;
@@ -393,7 +433,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .wf-role-title {
     font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-weight: 400;
     margin-bottom: 4px;
     letter-spacing: -.02em;
@@ -518,12 +558,12 @@ p { color: var(--muted); line-height: 1.7; }
     box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
   }
 
-  .wf-placeholder-welder { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #0e243b 0%, #061320 100%); }
-  .wf-placeholder-pipefitter { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #102a45 0%, #071626 100%); }
-  .wf-placeholder-boilermaker { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #143252 0%, #08192a 100%); }
-  .wf-placeholder-mechanic { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #0f273f 0%, #06121f 100%); }
-  .wf-placeholder-electrician { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #122f4c 0%, #071728 100%); }
-  .wf-placeholder-supervisor { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #163659 0%, #091c30 100%); }
+  .wf-placeholder-welder { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #0e243b 0%, #061320 100%); }
+  .wf-placeholder-pipefitter { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #102a45 0%, #071626 100%); }
+  .wf-placeholder-boilermaker { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #143252 0%, #08192a 100%); }
+  .wf-placeholder-mechanic { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #0f273f 0%, #06121f 100%); }
+  .wf-placeholder-electrician { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #122f4c 0%, #071728 100%); }
+  .wf-placeholder-supervisor { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #163659 0%, #091c30 100%); }
 
   .wf-placeholder-center {
     display: flex;
@@ -533,7 +573,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-placeholder-title {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: clamp(2rem, 3.8vw, 3.4rem);
     color: #ffffff;
     letter-spacing: 0.05em;
@@ -565,7 +605,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-final-banner h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: clamp(1.6rem, 3vw, 2.5rem);
     font-weight: 400;
     color: #fff;
@@ -621,12 +661,12 @@ p { color: var(--muted); line-height: 1.7; }
     padding: 24px;
   }
 
-  .wf-placeholder-welder { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #0e243b 0%, #061320 100%); }
-  .wf-placeholder-pipefitter { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #102a45 0%, #071626 100%); }
-  .wf-placeholder-boilermaker { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #143252 0%, #08192a 100%); }
-  .wf-placeholder-mechanic { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #0f273f 0%, #06121f 100%); }
-  .wf-placeholder-electrician { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #122f4c 0%, #071728 100%); }
-  .wf-placeholder-supervisor { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .22), transparent 60%), linear-gradient(135deg, #163659 0%, #091c30 100%); }
+  .wf-placeholder-welder { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #0e243b 0%, #061320 100%); }
+  .wf-placeholder-pipefitter { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #102a45 0%, #071626 100%); }
+  .wf-placeholder-boilermaker { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #143252 0%, #08192a 100%); }
+  .wf-placeholder-mechanic { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #0f273f 0%, #06121f 100%); }
+  .wf-placeholder-electrician { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #122f4c 0%, #071728 100%); }
+  .wf-placeholder-supervisor { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .22), transparent 60%), linear-gradient(135deg, #163659 0%, #091c30 100%); }
 
   .wf-placeholder-center {
     display: flex;
@@ -636,7 +676,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-placeholder-title {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.8rem;
     color: #ffffff;
     font-weight: 400;
@@ -656,7 +696,7 @@ p { color: var(--muted); line-height: 1.7; }
     bottom: 12px;
     left: 16px;
     font-size: 1.8rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     color: var(--accent);
     background: rgba(4, 13, 22, 0.85);
     padding: 2px 10px;
@@ -667,7 +707,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .wf-mobile-content h3 {
     font-size: 1.8rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-weight: 400;
     margin-bottom: 6px;
   }
@@ -679,7 +719,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .wf-mobile-final h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.6rem;
     font-weight: 400;
     margin-top: 8px;
@@ -804,7 +844,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .ind-sector-title {
     font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-weight: 400;
     margin-bottom: 4px;
     letter-spacing: -.02em;
@@ -836,8 +876,8 @@ p { color: var(--muted); line-height: 1.7; }
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
-    background: rgba(215, 168, 90, 0.10);
-    border: 1px solid rgba(215, 168, 90, 0.25);
+    background: rgba(255, 180, 43, 0.10);
+    border: 1px solid rgba(255, 180, 43, 0.25);
     padding: 3px 10px;
     border-radius: 16px;
     font-weight: 600;
@@ -962,12 +1002,12 @@ p { color: var(--muted); line-height: 1.7; }
     box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.45);
   }
 
-  .ind-placeholder-oil-gas { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #0f2742 0%, #05101c 100%); }
-  .ind-placeholder-petrochemical { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #112d4c 0%, #061322 100%); }
-  .ind-placeholder-refineries { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #15355a 0%, #071628 100%); }
-  .ind-placeholder-energy { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #102a46 0%, #06111e 100%); }
-  .ind-placeholder-shipyards { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #133355 0%, #071526 100%); }
-  .ind-placeholder-construction { background: radial-gradient(circle at 70% 30%, rgba(215, 168, 90, .20), transparent 65%), linear-gradient(135deg, #173b63 0%, #08182b 100%); }
+  .ind-placeholder-oil-gas { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #0f2742 0%, #05101c 100%); }
+  .ind-placeholder-petrochemical { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #112d4c 0%, #061322 100%); }
+  .ind-placeholder-refineries { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #15355a 0%, #071628 100%); }
+  .ind-placeholder-energy { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #102a46 0%, #06111e 100%); }
+  .ind-placeholder-shipyards { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #133355 0%, #071526 100%); }
+  .ind-placeholder-construction { background: radial-gradient(circle at 70% 30%, rgba(255, 180, 43, .20), transparent 65%), linear-gradient(135deg, #173b63 0%, #08182b 100%); }
 
   .ind-placeholder-center {
     display: flex;
@@ -977,7 +1017,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .ind-placeholder-title {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: clamp(1.4rem, 2.6vw, 2.2rem);
     color: rgba(255, 255, 255, 0.85);
     letter-spacing: 0.08em;
@@ -1008,7 +1048,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .ind-final-banner h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: clamp(1.6rem, 3vw, 2.5rem);
     font-weight: 400;
     color: #fff;
@@ -1057,7 +1097,7 @@ p { color: var(--muted); line-height: 1.7; }
     bottom: 12px;
     left: 16px;
     font-size: 1.8rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     color: var(--accent);
     background: rgba(4, 13, 22, 0.85);
     padding: 2px 10px;
@@ -1078,7 +1118,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .ind-mobile-content h3 {
     font-size: 1.8rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-weight: 400;
     margin-bottom: 8px;
   }
@@ -1090,7 +1130,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .ind-mobile-final h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.6rem;
     font-weight: 400;
     margin-top: 8px;
@@ -1194,7 +1234,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .del-process-counter {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.2rem;
     color: var(--accent);
     display: flex;
@@ -1228,7 +1268,7 @@ p { color: var(--muted); line-height: 1.7; }
     background: var(--accent);
     transition: height 0.3s ease;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(215, 168, 90, 0.4);
+    box-shadow: 0 0 10px rgba(255, 180, 43, 0.4);
   }
 
   .del-step-item {
@@ -1284,7 +1324,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .del-step-title {
     font-size: 1.05rem;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-weight: 500;
     color: rgba(255, 255, 255, 0.92);
     letter-spacing: -0.01em;
@@ -1321,7 +1361,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .del-impact-inner h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 400;
     color: #ffffff;
@@ -1398,7 +1438,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .del-mobile-step-content h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 400;
     color: #fff;
@@ -1425,7 +1465,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .del-mobile-cta h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.4rem;
     font-weight: 400;
     margin: 0;
@@ -1438,7 +1478,7 @@ p { color: var(--muted); line-height: 1.7; }
   }
 
   .del-mobile-impact h3 {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 400;
     color: #fff;
@@ -1510,8 +1550,8 @@ p { color: var(--muted); line-height: 1.7; }
 .euro-timeline-track {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, rgba(215, 168, 90, 0.6) 100%);
-  box-shadow: 0 0 10px rgba(215, 168, 90, 0.4);
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(255, 180, 43, 0.6) 100%);
+  box-shadow: 0 0 10px rgba(255, 180, 43, 0.4);
   border-radius: 2px;
 }
 
@@ -1544,14 +1584,14 @@ p { color: var(--muted); line-height: 1.7; }
 
 .euro-node-num {
   font-size: 0.76rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   color: var(--accent);
   font-weight: 600;
 }
 
 .euro-country-name {
   font-size: 0.95rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   letter-spacing: 0.1em;
   color: #ffffff;
   font-weight: 500;
@@ -1566,7 +1606,7 @@ p { color: var(--muted); line-height: 1.7; }
 }
 
 .euro-pillars-heading h3 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 400;
   color: #ffffff;
@@ -1588,7 +1628,7 @@ p { color: var(--muted); line-height: 1.7; }
 
 .euro-pillar-num {
   font-size: 2.2rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   color: var(--accent);
   line-height: 1;
   font-weight: 400;
@@ -1604,7 +1644,7 @@ p { color: var(--muted); line-height: 1.7; }
 
 .euro-pillar-title {
   font-size: 1.35rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   color: #ffffff;
   letter-spacing: -0.01em;
@@ -1650,7 +1690,7 @@ p { color: var(--muted); line-height: 1.7; }
 }
 
 .euro-impact-statement h2 {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 5.2vw, 4.5rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -1783,7 +1823,7 @@ p { color: var(--muted); line-height: 1.7; }
   justify-content: center;
   text-align: center;
   padding: 32px;
-  background: radial-gradient(circle at 60% 40%, rgba(215, 168, 90, 0.18), transparent 70%), linear-gradient(135deg, #091c2e 0%, #040c17 100%);
+  background: radial-gradient(circle at 60% 40%, rgba(255, 180, 43, 0.18), transparent 70%), linear-gradient(135deg, #091c2e 0%, #040c17 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1795,7 +1835,7 @@ p { color: var(--muted); line-height: 1.7; }
 }
 
 .about-placeholder-logo {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   letter-spacing: 0.15em;
   color: #ffffff;
@@ -1866,7 +1906,7 @@ p { color: var(--muted); line-height: 1.7; }
 }
 
 .careers-profile-text {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.9);

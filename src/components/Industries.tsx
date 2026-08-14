@@ -338,7 +338,7 @@ export function Industries() {
                     strokeWidth="3.5"
                     vectorEffect="non-scaling-stroke"
                     strokeLinecap="round"
-                    style={{ filter: 'drop-shadow(0 0 6px rgba(215, 168, 90, 0.7))' }}
+                    style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
                   />
                   {/* Active Highlighted Gold Frame Loop */}
                   <path
@@ -350,7 +350,7 @@ export function Industries() {
                     vectorEffect="non-scaling-stroke"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    style={{ filter: 'drop-shadow(0 0 6px rgba(215, 168, 90, 0.7))' }}
+                    style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
                   />
                   {/* Technical Nodes along exact outer image border */}
                   <circle cx="-380" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
