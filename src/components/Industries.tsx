@@ -108,12 +108,11 @@ export function Industries() {
           },
         })
 
-        // Animate SVG pipeline stroke-dashoffset along the entire timeline
+        // Animate SVG pipeline stroke-dashoffset to reach 0 by progress 0.82 (so frame is 100% closed on sector 06)
         if (pathRef.current) {
-          const pathLength = pathRef.current.getTotalLength() || 1000
           masterTl.to(
             pathRef.current,
-            { strokeDashoffset: 0, ease: 'none', duration: 1 },
+            { strokeDashoffset: 0, ease: 'none', duration: 0.82 },
             0
           )
         }
@@ -166,9 +165,14 @@ export function Industries() {
         })
 
         // Final message banner (0.96 to 1.00)
+        masterTl.to(
+          '.ind-progress-bar',
+          { opacity: 0, autoAlpha: 0, duration: 0.02 },
+          0.94
+        )
         masterTl.fromTo(
           '.ind-final-banner',
-          { opacity: 0, autoAlpha: 0, y: 35 },
+          { opacity: 0, autoAlpha: 0, y: 20 },
           { opacity: 1, autoAlpha: 1, y: 0, duration: 0.03 },
           0.96
         )
@@ -225,15 +229,12 @@ export function Industries() {
                       key={sec.id || i}
                       className={`ind-card-item ind-card-${i} ${isActive ? 'is-active' : ''}`}
                     >
-                      {/* Background Watermark Number */}
-                      <span className="ind-watermark-num" aria-hidden="true">
-                        {sec.number || itemConfig?.number}
-                      </span>
-
-                      <div className="ind-number-badge">
-                        <span className="ind-current-num">{sec.number || itemConfig?.number}</span>
-                        <span className="ind-num-sep">/</span>
-                        <span className="ind-total-num">0{industrySectors.length}</span>
+                      <div className="ind-card-meta">
+                        <span className="ind-microcopy">{t('industries.eyebrow')}</span>
+                        <span className="ind-meta-sep">•</span>
+                        <span className="ind-number-badge">
+                          {sec.number || itemConfig?.number} / 0{industrySectors.length}
+                        </span>
                       </div>
 
                       <h3 className="ind-sector-title">{sec.title}</h3>
@@ -315,7 +316,7 @@ export function Industries() {
                   {/* Background Technical Path */}
                   <path
                     className="ind-pipe-bg"
-                    d="M -380 225 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 235"
+                    d="M -380 160 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 170"
                     stroke="rgba(255, 255, 255, 0.15)"
                     strokeWidth="3"
                     vectorEffect="non-scaling-stroke"
@@ -326,7 +327,7 @@ export function Industries() {
                   <path
                     ref={pathRef}
                     className="ind-pipe-active"
-                    d="M -380 225 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 235"
+                    d="M -380 160 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 170"
                     stroke="var(--accent)"
                     strokeWidth="3.5"
                     vectorEffect="non-scaling-stroke"
@@ -335,13 +336,13 @@ export function Industries() {
                     style={{ filter: 'drop-shadow(0 0 6px rgba(215, 168, 90, 0.7))' }}
                   />
                   {/* Technical Nodes along exact outer image border */}
-                  <circle cx="-380" cy="225" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="-380" cy="160" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="0" cy="12" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="250" cy="0" r="4.5" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="500" cy="12" r="4.5" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="500" cy="438" r="4.5" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                   <circle cx="12" cy="450" r="4.5" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="235" r="4.5" fill={activeIndex >= 5 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="170" r="4.5" fill={activeIndex >= 5 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
                 </svg>
               </div>
             </div>
