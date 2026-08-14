@@ -50,8 +50,8 @@ export function WorkforceScroll() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Desktop scrubbed & pinned ScrollTrigger section (>= 901px)
-      mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+      // Scrubbed & pinned ScrollTrigger section across all screen sizes
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
         // Deterministic initial state: Profile 01 (WELDER) is 100% visible immediately from pixel 0
         gsap.set('.wf-card-0', { opacity: 1, autoAlpha: 1, y: 0 })
         gsap.set('.wf-img-0', { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)' })

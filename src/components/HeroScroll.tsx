@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 export function HeroScroll() {
   const { t } = useTranslation()
@@ -19,8 +20,8 @@ export function HeroScroll() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Desktop: Pinned GSAP ScrollTrigger Storytelling (>= 769px)
-      mm.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
+      // Pinned GSAP ScrollTrigger Storytelling across all screen sizes
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
         // Video currentTime scrub if video exists
         if (video) {
           const syncVideo = () => {

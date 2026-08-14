@@ -62,8 +62,8 @@ export function Industries() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Desktop scrubbed ScrollTrigger pinned section (>= 901px)
-      mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+      // Scrubbed ScrollTrigger pinned section across all screen sizes
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
         // Deterministic initial state: Sector 01 (OIL & GAS) is 100% visible immediately from pixel 0
         gsap.set('.ind-card-0', { opacity: 1, autoAlpha: 1, y: 0 })
         gsap.set('.ind-img-0', { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)' })
