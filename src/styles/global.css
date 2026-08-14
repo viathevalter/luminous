@@ -306,7 +306,7 @@ p { color: var(--muted); line-height: 1.7; }
     grid-template-columns: minmax(340px, 0.40fr) minmax(520px, 0.60fr);
     gap: 64px;
     align-items: center;
-    height: calc(100% - 70px);
+    height: calc(100% - 130px);
     width: 100%;
   }
 
@@ -320,13 +320,13 @@ p { color: var(--muted); line-height: 1.7; }
 
   .wf-heading {
     max-width: 680px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
   .wf-cards-stage {
     position: relative;
-    height: 260px;
+    height: 220px;
   }
 
   /* Only ONE active profile card visible at a time */
@@ -423,7 +423,7 @@ p { color: var(--muted); line-height: 1.7; }
     display: flex;
     gap: 12px;
     align-items: center;
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   .wf-progress-step {
@@ -456,12 +456,14 @@ p { color: var(--muted); line-height: 1.7; }
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 5;
   }
 
   .wf-media-frame {
     position: relative;
     width: 100%;
-    height: clamp(440px, 74vh, 720px);
+    height: clamp(360px, 60vh, 560px);
     overflow: hidden;
     background: #0D1B28;
     border: 1px solid var(--line);
@@ -548,18 +550,20 @@ p { color: var(--muted); line-height: 1.7; }
 
   .wf-final-banner {
     text-align: center;
-    padding-top: 16px;
+    padding: 12px 0;
     opacity: 0;
     visibility: hidden;
+    position: relative;
+    z-index: 10;
   }
 
   .wf-final-banner h3 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
     font-weight: 400;
     color: #fff;
     letter-spacing: -.02em;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .wf-mobile-list { display: none; }
@@ -705,7 +709,7 @@ p { color: var(--muted); line-height: 1.7; }
     grid-template-columns: minmax(340px, 0.40fr) minmax(520px, 0.60fr);
     gap: 64px;
     align-items: center;
-    height: calc(100% - 70px);
+    height: calc(100% - 130px);
     width: 100%;
     position: relative;
   }
@@ -727,7 +731,7 @@ p { color: var(--muted); line-height: 1.7; }
 
   .ind-cards-stage {
     position: relative;
-    height: 280px;
+    height: 240px;
   }
 
   .ind-card-item {
@@ -862,7 +866,7 @@ p { color: var(--muted); line-height: 1.7; }
   .ind-media-frame-container {
     position: relative;
     width: 100%;
-    height: clamp(440px, 74vh, 720px);
+    height: clamp(360px, 60vh, 560px);
   }
 
   .ind-media-frame {
@@ -979,18 +983,20 @@ p { color: var(--muted); line-height: 1.7; }
 
   .ind-final-banner {
     text-align: center;
-    padding-top: 16px;
+    padding: 12px 0;
     opacity: 0;
     visibility: hidden;
+    position: relative;
+    z-index: 10;
   }
 
   .ind-final-banner h3 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
     font-weight: 400;
     color: #fff;
     letter-spacing: -.02em;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .ind-mobile-list { display: none; }
