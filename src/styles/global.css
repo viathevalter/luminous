@@ -2135,15 +2135,17 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
   .desktop-nav { display: none; }
   .brand-logo { width: 128px; }
   .section-space { padding: 84px 0; }
-  .hero-scroll { height: 115vh; }
-  .hero-sticky { position: sticky; }
+  .hero-scroll { height: 100vh; }
+  .hero-sticky { position: relative; }
   .hero-media { object-position: 64% center; }
   .hero-overlay { background: linear-gradient(90deg, rgba(1, 10, 18, 0.94), rgba(1, 10, 18, 0.55)), linear-gradient(to top, rgba(1, 10, 18, 0.75), transparent); }
-  .hero-copy { padding-top: 80px; }
-  .hero-copy h1 { font-size: clamp(2.5rem, 8.5vw, 3.8rem); max-width: 580px; }
-  .hero-description { max-width: 480px; font-size: 1rem; }
-  .hero-beats { display: none; }
-  .scroll-cue { display: none; }
+  .hero-copy { padding-top: 10px; margin-top: 60px; }
+  .hero-copy h1 { font-size: clamp(2.2rem, 7.5vw, 3.5rem); max-width: 580px; }
+  .hero-description { max-width: 480px; font-size: 0.95rem; }
+  .hero-beats { display: block !important; }
+  .hero-beat { font-size: clamp(1.6rem, 5.8vw, 3.2rem); max-width: 92%; left: 4%; }
+  .hero-beat--4 .hero-beat-title { font-size: clamp(1.6rem, 5.8vw, 3.2rem); }
+  .scroll-cue { display: flex !important; bottom: 20px; font-size: 0.65rem; }
 }
 
 @media (max-width: 560px) {

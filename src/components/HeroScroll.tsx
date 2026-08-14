@@ -19,10 +19,10 @@ export function HeroScroll() {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
-      // Desktop: Pinned GSAP ScrollTrigger Storytelling (>= 769px)
-      mm.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
-        // Video currentTime scrub if video exists
-        if (video) {
+      // Pinned GSAP ScrollTrigger Storytelling across all screen sizes
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Video currentTime scrub on desktop if video exists
+        if (video && window.innerWidth >= 769) {
           const syncVideo = () => {
             const duration = Number.isFinite(video.duration) ? video.duration : 0
             if (!duration) return
@@ -40,12 +40,15 @@ export function HeroScroll() {
           else video.addEventListener('loadedmetadata', syncVideo, { once: true })
         }
 
-        // Single Master Timeline pinned for 2400px of scroll storytelling
+        const isMobile = window.innerWidth < 769
+        const endDistance = isMobile ? '+=1200' : '+=2400'
+
+        // Single Master Timeline pinned for Hero scroll storytelling
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: '+=2400',
+            end: endDistance,
             pin: true,
             scrub: 0.5,
             anticipatePin: 1,
@@ -88,7 +91,9 @@ export function HeroScroll() {
         <video
           ref={videoRef}
           className="hero-media"
+          autoPlay
           muted
+          loop
           playsInline
           preload="metadata"
           poster="/assets/hero/hero-poster.png"
