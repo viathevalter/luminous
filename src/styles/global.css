@@ -157,7 +157,7 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
   object-fit: cover;
   transform: scale(1);
   transition: transform .1s linear;
-  background: #07121e url('/assets/hero/hero-poster.jpg') center/cover no-repeat;
+  background: #07121e url('/assets/hero/hero-poster.png') center/cover no-repeat;
 }
 
 /* Gradient Overlay tuned for text readability and worker visibility */

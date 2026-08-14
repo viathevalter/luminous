@@ -91,7 +91,7 @@ export function HeroScroll() {
           muted
           playsInline
           preload="metadata"
-          poster="/assets/hero/hero-poster.jpg"
+          poster="/assets/hero/hero-poster.png"
           aria-hidden="true"
         >
           <source src="/assets/hero/luminous-hero-desktop.mp4" type="video/mp4" />
