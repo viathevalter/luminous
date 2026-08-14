@@ -38,8 +38,6 @@ export function Industries() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [imageStage, setImageStage] = useState<Record<string, number>>({})
 
-  const [activeMobileIndex, setActiveMobileIndex] = useState(0)
-
   const sectors = t('industries.sectors', { returnObjects: true }) as SectorData[]
   const finalBanner = t('industries.finalBanner', { defaultValue: 'ONE INDUSTRIAL PARTNER. MULTIPLE SECTORS.' })
 
@@ -51,33 +49,11 @@ export function Industries() {
   }
 
   const handleImageError = (id: string) => {
-    setImageStage((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }))
+    setImageStage((prev) => {
+      const current = prev[id] || 0
+      return { ...prev, [id]: current + 1 }
+    })
   }
-
-  useEffect(() => {
-    const blocks = document.querySelectorAll('.ind-mobile-block')
-    if (!blocks.length) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute('data-index'))
-            if (!isNaN(idx)) {
-              setActiveMobileIndex(idx)
-            }
-          }
-        })
-      },
-      {
-        rootMargin: '-30% 0px -40% 0px',
-        threshold: 0.2,
-      }
-    )
-
-    blocks.forEach((block) => observer.observe(block))
-    return () => observer.disconnect()
-  }, [])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -92,14 +68,23 @@ export function Industries() {
         gsap.set('.ind-card-0', { opacity: 1, autoAlpha: 1, y: 0 })
         gsap.set('.ind-img-0', { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)' })
 
-        // Sectors 02 to 06 start hidden
+        // Sectors 02 to 06 start hidden for scroll transition
         industrySectors.slice(1).forEach((_, i) => {
           const idx = i + 1
           gsap.set(`.ind-card-${idx}`, { opacity: 0, autoAlpha: 0, y: 30 })
-          gsap.set(`.ind-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.05, clipPath: 'inset(100% 0 0 0)' })
+          gsap.set(`.ind-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.04, clipPath: 'inset(100% 0 0 0)' })
         })
 
-        // Master Timeline pinned for 3600px of scroll storytelling
+        // Prepare SVG pipeline stroke-dasharray animation
+        if (pathRef.current) {
+          const pathLength = pathRef.current.getTotalLength() || 1000
+          gsap.set(pathRef.current, {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength,
+          })
+        }
+
+        // Single Master Timeline pinned for 3600px of industry sector storytelling
         const masterTl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -123,28 +108,28 @@ export function Industries() {
           },
         })
 
-        // SVG pipeline stroke draw animation synced to scroll
-        const path = pathRef.current
-        if (path) {
-          const pathLength = path.getTotalLength()
-          gsap.set(path, {
-            strokeDasharray: pathLength,
-            strokeDashoffset: pathLength,
+        // Animate SVG frame loop path starting at (0, 200) UP to top-left (0, 12) -> top -> right -> bottom -> bottom-left, closing fully at (0, 200) on sector 06
+        if (pathRef.current) {
+          const frameLength = pathRef.current.getTotalLength() || 1840
+
+          gsap.set(pathRef.current, {
+            strokeDasharray: frameLength,
+            strokeDashoffset: frameLength,
           })
 
           masterTl.to(
-            path,
-            {
-              strokeDashoffset: 0,
-              ease: 'none',
-            },
+            pathRef.current,
+            { strokeDashoffset: 0, ease: 'none', duration: 0.85 },
             0
           )
         }
 
+        // 0. Intro heading fade-out coexisting with Sector 01 (0.00 to 0.08)
+        masterTl.to('.ind-heading-intro', { opacity: 0.15, y: -15, duration: 0.05 }, 0.02)
+
         // Sectors 0 to 5 (3600px distribution)
         const ranges = [
-          { start: 0, end: 0.16 },
+          { start: 0.00, end: 0.16 },
           { start: 0.16, end: 0.32 },
           { start: 0.32, end: 0.48 },
           { start: 0.48, end: 0.64 },
@@ -157,6 +142,7 @@ export function Industries() {
           const isLast = i === ranges.length - 1
           const transitionTime = 0.025
 
+          // Reveal phase (for Sectors 02 to 06)
           if (!isFirst) {
             masterTl.fromTo(
               `.ind-card-${i}`,
@@ -172,6 +158,7 @@ export function Industries() {
             )
           }
 
+          // Exit phase (for Sectors 01 to 06)
           masterTl.to(
             `.ind-card-${i}`,
             { opacity: 0, autoAlpha: 0, y: -20, duration: transitionTime },
@@ -184,6 +171,7 @@ export function Industries() {
           )
         })
 
+        // Final message banner (0.96 to 1.00)
         masterTl.to(
           '.ind-progress-bar',
           { opacity: 0, autoAlpha: 0, duration: 0.02 },
@@ -197,6 +185,27 @@ export function Industries() {
         )
       })
 
+      // Mobile / Tablet stacked list animation (< 901px)
+      mm.add('(max-width: 900px)', () => {
+        gsap.utils.toArray<HTMLElement>('.ind-mobile-item').forEach((item) => {
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 25 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 85%',
+              },
+            }
+          )
+        })
+      })
+
+      setTimeout(() => ScrollTrigger.refresh(), 100)
+
       return () => mm.revert()
     }, section)
 
@@ -208,7 +217,7 @@ export function Industries() {
       {/* Desktop Sticky Viewport */}
       <div className="ind-desktop-viewport">
         <div className="site-container ind-desktop-layout">
-          {/* Left Column (38-42%): Intro, Active Sector & Progress Bar */}
+          {/* Left Column (38-42%): Intro, Active Sector & Progress Indicator */}
           <div className="ind-left-col">
             <div className="section-heading ind-heading ind-heading-intro">
               <p className="eyebrow">{t('industries.eyebrow')}</p>
@@ -216,7 +225,7 @@ export function Industries() {
               <p>{t('industries.description')}</p>
             </div>
 
-            {/* Sector Content Stage */}
+            {/* Sector Content Stage (Strict Single Active Card Visible) */}
             <div className="ind-cards-stage">
               {Array.isArray(sectors) &&
                 sectors.map((sec, i) => {
@@ -228,16 +237,17 @@ export function Industries() {
                       className={`ind-card-item ind-card-${i} ${isActive ? 'is-active' : ''}`}
                     >
                       <div className="ind-card-meta">
-                        <span className="ind-microcopy">TARGET SECTOR</span>
+                        <span className="ind-microcopy">{t('industries.eyebrow')}</span>
                         <span className="ind-meta-sep">•</span>
                         <span className="ind-number-badge">
-                          {itemConfig?.number} / 0{industrySectors.length}
+                          {sec.number || itemConfig?.number} / 0{industrySectors.length}
                         </span>
                       </div>
 
                       <h3 className="ind-sector-title">{sec.title}</h3>
                       <p className="ind-sector-desc">{sec.description}</p>
 
+                      {/* Sector Technical Tags */}
                       {Array.isArray(sec.tags) && (
                         <div className="ind-tags-list">
                           {sec.tags.map((tag) => (
@@ -251,27 +261,32 @@ export function Industries() {
                   )
                 })}
             </div>
+
+            {/* Progress Line Indicator */}
+            <div className="ind-progress-bar" aria-hidden="true">
+              {industrySectors.map((s, i) => (
+                <div
+                  key={s.id}
+                  className={`ind-progress-step ${i === activeIndex ? 'active' : ''} ${
+                    i < activeIndex ? 'completed' : ''
+                  }`}
+                >
+                  <span>{s.number}</span>
+                  <div className="ind-step-line" />
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right Column (58-62%): Large Dominant Media Frame */}
+          {/* Right Column: Large Dominant Media Frame + Exact Pipeline Framing Overlay */}
           <div className="ind-right-col" aria-hidden="true">
             <div className="ind-media-frame-container">
-              {/* SVG Pipeline Draw Overlay */}
-              <svg className="ind-svg-pipeline" viewBox="0 0 500 500" fill="none">
-                <path
-                  ref={pathRef}
-                  d="M 20 480 L 20 20 L 480 20 L 480 480"
-                  stroke="#FFB42B"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
-
               <div className="ind-media-frame">
                 {industrySectors.map((s, i) => {
                   const isActive = i === activeIndex
                   const currentStage = imageStage[s.id] || 0
                   const imgSrc = getImageSrc(s)
+
                   return (
                     <div
                       key={s.id}
@@ -282,13 +297,14 @@ export function Industries() {
                           <img
                             className="ind-media-img"
                             src={imgSrc}
-                            alt=""
+                            alt={s.label}
                             loading="lazy"
                             onError={() => handleImageError(s.id)}
                           />
                           <div className="ind-media-overlay" />
                         </>
                       ) : (
+                        // TODO: replace industry placeholders with final Luminous industry assets.
                         <div className={`ind-placeholder-card ind-placeholder-${s.id}`}>
                           <div className="ind-placeholder-center">
                             <span className="ind-placeholder-title">{s.label}</span>
@@ -299,6 +315,52 @@ export function Industries() {
                     </div>
                   )
                 })}
+              </div>
+
+              {/* Technical Industrial SVG Pipeline - Fits EXACTLY to Image Frame Borders */}
+              <div className="ind-pipeline-overlay" aria-hidden="true">
+                <svg viewBox="0 0 500 450" fill="none" preserveAspectRatio="none">
+                  {/* Background Technical Path */}
+                  <path
+                    className="ind-pipe-bg"
+                    d="M -380 200 H 0 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
+                    stroke="rgba(255, 255, 255, 0.15)"
+                    strokeWidth="3"
+                    vectorEffect="non-scaling-stroke"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  {/* Active Gold Connector Line from left col to frame entry point */}
+                  <path
+                    className="ind-pipe-active-connector"
+                    d="M -380 200 H 0"
+                    stroke="var(--accent)"
+                    strokeWidth="3.5"
+                    vectorEffect="non-scaling-stroke"
+                    strokeLinecap="round"
+                    style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
+                  />
+                  {/* Active Highlighted Gold Frame Loop */}
+                  <path
+                    ref={pathRef}
+                    className="ind-pipe-active-frame"
+                    d="M 0 200 V 12 Q 0 0 12 0 H 488 Q 500 0 500 12 V 438 Q 500 450 488 450 H 12 Q 0 450 0 438 V 200"
+                    stroke="var(--accent)"
+                    strokeWidth="3.5"
+                    vectorEffect="non-scaling-stroke"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
+                  />
+                  {/* Technical Nodes along exact outer image border */}
+                  <circle cx="-380" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="12" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="250" cy="0" r="4.5" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="500" cy="12" r="4.5" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="500" cy="438" r="4.5" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="12" cy="450" r="4.5" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                </svg>
               </div>
             </div>
           </div>
@@ -311,64 +373,46 @@ export function Industries() {
         </div>
       </div>
 
-      {/* Mobile Sticky Storytelling Experience (< 769px) */}
+      {/* Mobile & Tablet Stacked List (< 901px) */}
       <div className="ind-mobile-list site-container">
-        <div className="section-heading ind-mobile-heading">
+        <div className="section-heading">
           <p className="eyebrow">{t('industries.eyebrow')}</p>
           <h2>{t('industries.title')}</h2>
           <p>{t('industries.description')}</p>
         </div>
 
-        {/* Sticky Mobile Image Frame */}
-        <div className="ind-mobile-sticky-frame">
-          {industrySectors.map((s, i) => {
-            const isActive = i === activeMobileIndex
-            const imgSrc = getImageSrc(s)
-
+        {Array.isArray(sectors) &&
+          sectors.map((sec, i) => {
+            const itemConfig = industrySectors[i]
+            const currentStage = imageStage[itemConfig?.id || i] || 0
+            const imgSrc = itemConfig ? getImageSrc(itemConfig) : ''
             return (
-              <div
-                key={s.id}
-                className={`ind-mobile-sticky-img-wrap ${isActive ? 'active' : ''}`}
-              >
-                {imgSrc ? (
-                  <img
-                    src={imgSrc}
-                    alt={s.label}
-                    className="ind-mobile-sticky-img"
-                    onError={() => handleImageError(s.id)}
-                  />
-                ) : (
-                  <div className={`ind-placeholder-card ind-placeholder-${s.id}`}>
-                    <span className="ind-placeholder-title">{s.label}</span>
-                  </div>
-                )}
-                <div className="ind-mobile-sticky-overlay" />
-              </div>
-            )
-          })}
-
-          <div className="ind-mobile-sticky-badge">
-            <span>INDUSTRIES</span>
-            <span className="sep">•</span>
-            <span className="badge-num">{industrySectors[activeMobileIndex]?.number || '01'} / 06</span>
-          </div>
-        </div>
-
-        {/* 6 Mobile Content Blocks with Left Line Segment */}
-        <div className="ind-mobile-blocks">
-          {Array.isArray(sectors) &&
-            sectors.map((sec, i) => {
-              const itemConfig = industrySectors[i]
-              const isActive = i === activeMobileIndex
-              return (
-                <div
-                  key={sec.id || i}
-                  data-index={i}
-                  className={`ind-mobile-block ${isActive ? 'active' : ''}`}
-                >
-                  <p className="ind-mobile-block-num">{itemConfig?.number}</p>
-                  <h3 className="ind-mobile-block-title">{sec.title}</h3>
-                  <p className="ind-mobile-block-desc">{sec.description}</p>
+              <article key={sec.id || i} className="ind-mobile-item">
+                <div className="ind-mobile-media">
+                  {currentStage < 2 && itemConfig ? (
+                    <>
+                      <img
+                        src={imgSrc}
+                        alt={sec.title}
+                        loading="lazy"
+                        onError={() => handleImageError(itemConfig.id)}
+                      />
+                      <div className="ind-media-overlay" />
+                    </>
+                  ) : (
+                    <div className={`ind-placeholder-card ind-placeholder-${itemConfig?.id || 'oil-gas'}`}>
+                      <div className="ind-placeholder-center">
+                        <span className="ind-placeholder-title">{itemConfig?.label}</span>
+                        <span className="ind-placeholder-sub">FINAL LUMINOUS INDUSTRY ASSET PENDING</span>
+                      </div>
+                    </div>
+                  )}
+                  <span className="ind-mobile-num">{itemConfig?.number}</span>
+                </div>
+                <div className="ind-mobile-content">
+                  <span className="ind-mobile-badge">{itemConfig?.number} / 06</span>
+                  <h3>{sec.title}</h3>
+                  <p className="ind-sector-desc">{sec.description}</p>
 
                   {Array.isArray(sec.tags) && (
                     <div className="ind-tags-list">
@@ -380,9 +424,9 @@ export function Industries() {
                     </div>
                   )}
                 </div>
-              )
-            })}
-        </div>
+              </article>
+            )
+          })}
 
         <div className="ind-mobile-final">
           <p className="eyebrow">LUMINOUS INDUSTRIES</p>

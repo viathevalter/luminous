@@ -4,7 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
-ScrollTrigger.config({ ignoreMobileResize: true })
 
 export function HeroScroll() {
   const { t } = useTranslation()
@@ -69,7 +68,11 @@ export function HeroScroll() {
         tl.fromTo('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.38)
         tl.to('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.06 }, 0.52)
 
-        // Estado 4: Beat 4 Final Message
+        // Estado 3: Beat 3 (THE RIGHT EXPERIENCE) (0.58 to 0.76)
+        tl.fromTo('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.58)
+        tl.to('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.06 }, 0.72)
+
+        // Estado 4: Beat 4 Final Message + Subtitle (0.78 to 1.00) - stays visible until section unpins
         tl.fromTo('.hero-beat--4', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.08 }, 0.78)
       })
 
@@ -85,9 +88,7 @@ export function HeroScroll() {
         <video
           ref={videoRef}
           className="hero-media"
-          autoPlay
           muted
-          loop
           playsInline
           preload="metadata"
           poster="/assets/hero/hero-poster.png"

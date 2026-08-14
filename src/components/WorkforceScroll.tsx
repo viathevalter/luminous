@@ -35,8 +35,6 @@ export function WorkforceScroll() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({})
 
-  const [activeMobileIndex, setActiveMobileIndex] = useState(0)
-
   const roles = t('workforce.roles', { returnObjects: true }) as RoleData[]
   const microcopy = t('workforce.microcopy', { defaultValue: 'SKILLED WORKFORCE' })
   const finalMessage = t('workforce.finalMessage')
@@ -44,31 +42,6 @@ export function WorkforceScroll() {
   const handleImageError = (id: string) => {
     setFailedImages((prev) => ({ ...prev, [id]: true }))
   }
-
-  useEffect(() => {
-    const blocks = document.querySelectorAll('.wf-mobile-block')
-    if (!blocks.length) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute('data-index'))
-            if (!isNaN(idx)) {
-              setActiveMobileIndex(idx)
-            }
-          }
-        })
-      },
-      {
-        rootMargin: '-30% 0px -40% 0px',
-        threshold: 0.2,
-      }
-    )
-
-    blocks.forEach((block) => observer.observe(block))
-    return () => observer.disconnect()
-  }, [])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -87,10 +60,10 @@ export function WorkforceScroll() {
         workforceProfiles.slice(1).forEach((_, i) => {
           const idx = i + 1
           gsap.set(`.wf-card-${idx}`, { opacity: 0, autoAlpha: 0, y: 30 })
-          gsap.set(`.wf-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.05, clipPath: 'inset(100% 0 0 0)' })
+          gsap.set(`.wf-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.04, clipPath: 'inset(100% 0 0 0)' })
         })
 
-        // Master Timeline pinned for 3600px of scrubbed scroll storytelling
+        // Master Timeline pinned for 3600px of profile storytelling
         const masterTl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -119,7 +92,7 @@ export function WorkforceScroll() {
 
         // Profiles 0 to 5 (3600px distribution)
         const ranges = [
-          { start: 0, end: 0.16 },
+          { start: 0.00, end: 0.16 },
           { start: 0.16, end: 0.32 },
           { start: 0.32, end: 0.48 },
           { start: 0.48, end: 0.64 },
@@ -174,6 +147,27 @@ export function WorkforceScroll() {
           0.96
         )
       })
+
+      // Mobile / Tablet stacked list animation (< 901px)
+      mm.add('(max-width: 900px)', () => {
+        gsap.utils.toArray<HTMLElement>('.wf-mobile-item').forEach((item) => {
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 25 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 85%',
+              },
+            }
+          )
+        })
+      })
+
+      setTimeout(() => ScrollTrigger.refresh(), 100)
 
       return () => mm.revert()
     }, section)
@@ -284,65 +278,52 @@ export function WorkforceScroll() {
         </div>
       </div>
 
-      {/* Mobile Sticky Storytelling Experience (< 769px) */}
+      {/* Mobile & Tablet Stacked List (< 901px) */}
       <div className="wf-mobile-list site-container">
-        <div className="section-heading wf-mobile-heading">
+        <div className="section-heading">
           <p className="eyebrow">{t('workforce.eyebrow')}</p>
           <h2>{t('workforce.title')}</h2>
           <p>{t('workforce.description')}</p>
         </div>
 
-        {/* Sticky Mobile Image Frame */}
-        <div className="wf-mobile-sticky-frame">
-          {workforceProfiles.map((p, i) => {
-            const isActive = i === activeMobileIndex
-            const hasImageFailed = failedImages[p.id]
-            const imgSrc = hasImageFailed ? p.fallbackSvg : p.image
-
+        {Array.isArray(roles) &&
+          roles.map((role, i) => {
+            const profile = workforceProfiles[i]
+            const hasImageFailed = failedImages[profile?.id || i]
+            const imgSrc = hasImageFailed ? profile?.fallbackSvg : profile?.image
             return (
-              <div
-                key={p.id}
-                className={`wf-mobile-sticky-img-wrap ${isActive ? 'active' : ''}`}
-              >
-                <img
-                  src={imgSrc}
-                  alt={p.label}
-                  className="wf-mobile-sticky-img"
-                  style={{ objectPosition: p.objectPosition || 'center top' }}
-                  onError={() => handleImageError(p.id)}
-                />
-                <div className="wf-mobile-sticky-overlay" />
-              </div>
+              <article key={profile?.id || i} className="wf-mobile-item">
+                <div className="wf-mobile-media">
+                  {!hasImageFailed ? (
+                    <>
+                      <img
+                        src={imgSrc}
+                        alt={role.title}
+                        loading="lazy"
+                        style={{ objectPosition: profile?.objectPosition || 'center center' }}
+                        onError={() => handleImageError(profile?.id || `${i}`)}
+                      />
+                      <div className="wf-media-overlay" />
+                    </>
+                  ) : (
+                    <div className={`wf-placeholder-card wf-placeholder-${profile?.id || 'welder'}`}>
+                      <div className="wf-placeholder-center">
+                        <span className="wf-placeholder-title">{profile?.label}</span>
+                        <span className="wf-placeholder-sub">FINAL LUMINOUS ASSET PENDING</span>
+                      </div>
+                    </div>
+                  )}
+                  <span className="wf-mobile-num">{profile?.number}</span>
+                </div>
+                <div className="wf-mobile-content">
+                  <p className="wf-microcopy">{microcopy} / {profile?.number}</p>
+                  <h3>{role.title}</h3>
+                  <p className="wf-role-specs">{role.subtitle}</p>
+                  <p className="wf-role-desc">{role.description}</p>
+                </div>
+              </article>
             )
           })}
-
-          <div className="wf-mobile-sticky-badge">
-            <span>{microcopy}</span>
-            <span className="sep">•</span>
-            <span className="badge-num">{workforceProfiles[activeMobileIndex]?.number || '01'} / 06</span>
-          </div>
-        </div>
-
-        {/* 6 Mobile Content Blocks */}
-        <div className="wf-mobile-blocks">
-          {Array.isArray(roles) &&
-            roles.map((role, i) => {
-              const profile = workforceProfiles[i]
-              const isActive = i === activeMobileIndex
-              return (
-                <div
-                  key={profile?.id || i}
-                  data-index={i}
-                  className={`wf-mobile-block ${isActive ? 'active' : ''}`}
-                >
-                  <p className="wf-mobile-block-num">{profile?.number}</p>
-                  <h3 className="wf-mobile-block-title">{role.title}</h3>
-                  <p className="wf-mobile-block-specs">{role.subtitle}</p>
-                  <p className="wf-mobile-block-desc">{role.description}</p>
-                </div>
-              )
-            })}
-        </div>
 
         <div className="wf-mobile-final">
           <p className="eyebrow">LUMINOUS WORKFORCE</p>

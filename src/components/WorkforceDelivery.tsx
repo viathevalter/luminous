@@ -74,6 +74,25 @@ export function WorkforceDelivery() {
         })
       })
 
+      // Mobile / Tablet stacked animation (< 901px)
+      mm.add('(max-width: 900px)', () => {
+        gsap.utils.toArray<HTMLElement>('.del-mobile-step').forEach((item) => {
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 88%',
+              },
+            }
+          )
+        })
+      })
+
       setTimeout(() => ScrollTrigger.refresh(), 100)
 
       return () => mm.revert()
