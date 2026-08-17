@@ -9,8 +9,6 @@ import { WorkforceDelivery } from './components/WorkforceDelivery'
 import { EuropeanExperience } from './components/EuropeanExperience'
 import { AboutLuminous } from './components/AboutLuminous'
 import { WorkersPage } from './components/WorkersPage'
-import { Careers } from './components/Careers'
-import { FinalCTA } from './components/FinalCTA'
 import { Footer } from './components/Footer'
 import { ChatWidget } from './components/ChatWidget'
 import { FormModal } from './components/FormModal'
@@ -50,8 +48,6 @@ export default function App() {
         <EuropeanExperience />
         <AboutLuminous />
         <WorkersPage />
-        <Careers />
-        <FinalCTA />
       </main>
       <Footer />
       <ChatWidget />

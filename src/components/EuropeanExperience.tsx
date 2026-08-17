@@ -151,6 +151,7 @@ export function EuropeanExperience() {
             {Array.isArray(countries) &&
               countries.map((c, i) => (
                 <div key={c.code || i} className="euro-timeline-item">
+                  <div className="euro-timeline-connector" aria-hidden="true" />
                   <div className="euro-timeline-node">
                     <span className="euro-node-dot" aria-hidden="true" />
                     <span className="euro-node-num">0{i + 1}</span>

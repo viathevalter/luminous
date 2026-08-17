@@ -143,67 +143,6 @@ export function WorkersPage() {
       </section>
 
       {/* ---------------------------------------------------- */}
-      {/* C) BLOCO "PERFIS PROCURADOS" (OIL & GAS)             */}
-      {/* ---------------------------------------------------- */}
-      <section className="workers-profiles section-space alt-bg">
-        <div className="site-container">
-          <div className="section-heading text-center">
-            <p className="eyebrow">{t('workersPage.profiles.eyebrow')}</p>
-            <h2>{t('workersPage.profiles.title')}</h2>
-            <p className="section-sub">{t('workersPage.profiles.subtitle')}</p>
-          </div>
-
-          <div className="profiles-grid">
-            {Array.isArray(profilesData) &&
-              profilesData.map((prof) => (
-                <div key={prof.id} className="profile-card">
-                  <div className="profile-header">
-                    <div className="profile-icon">{profileIcons[prof.id] || profileIcons.welders}</div>
-                    <div>
-                      <h3 className="profile-title">{prof.title}</h3>
-                      <span className="profile-subtitle">{prof.subtitle}</span>
-                    </div>
-                  </div>
-                  <p className="profile-desc">{prof.description}</p>
-                  <button
-                    type="button"
-                    className="btn btn-outline-gold btn-sm"
-                    onClick={() => openFormModal({ mode: 'cv', initialRole: prof.title })}
-                  >
-                    {t('workersPage.profiles.cta')} <span className="btn-arrow">→</span>
-                  </button>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------- */}
-      {/* D) BLOCO "COMO FUNCIONA O REGISTO DO SEU PERFIL"     */}
-      {/* ---------------------------------------------------- */}
-      <section className="workers-process section-space">
-        <div className="site-container">
-          <div className="section-heading text-center">
-            <p className="eyebrow">{t('workersPage.process.eyebrow')}</p>
-            <h2>{t('workersPage.process.title')}</h2>
-          </div>
-
-          <div className="process-timeline">
-            {Array.isArray(processSteps) &&
-              processSteps.map((step) => (
-                <div key={step.number} className="process-step">
-                  <div className="step-num">{step.number}</div>
-                  <div className="step-content">
-                    <h4>{step.title}</h4>
-                    <p>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------- */}
       {/* E) CTA FINAL                                         */}
       {/* ---------------------------------------------------- */}
       <section className="workers-final-cta section-space">

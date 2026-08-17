@@ -63,14 +63,14 @@ export function WorkforceScroll() {
           gsap.set(`.wf-img-${idx}`, { opacity: 0, autoAlpha: 0, scale: 1.04, clipPath: 'inset(100% 0 0 0)' })
         })
 
-        // Master Timeline pinned for 3600px of profile storytelling
+        // Master Timeline pinned for 6000px of profile storytelling
         const masterTl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'top 84px',
-            end: '+=3600',
+            end: '+=6000',
             pin: true,
-            scrub: 0.5,
+            scrub: 0.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {

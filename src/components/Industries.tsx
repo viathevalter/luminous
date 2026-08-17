@@ -84,14 +84,14 @@ export function Industries() {
           })
         }
 
-        // Single Master Timeline pinned for 3600px of industry sector storytelling
+        // Single Master Timeline pinned for 6000px of industry sector storytelling
         const masterTl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: 'top 84px',
-            end: '+=3600',
+            end: '+=6000',
             pin: true,
-            scrub: 0.5,
+            scrub: 0.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
