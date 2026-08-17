@@ -3,6 +3,7 @@
     "home": "Home",
     "industries": "Industries",
     "workforce": "Workforce",
+    "workers": "Workers",
     "about": "About",
     "contact": "Contact"
   },
@@ -11,7 +12,7 @@
     "title": "The workforce behind critical industrial projects.",
     "description": "Qualified technical teams for oil, gas, petrochemical and industrial projects, backed by extensive experience across Europe.",
     "primary": "REQUEST WORKFORCE",
-    "secondary": "EXPLORE CAPABILITIES",
+    "candidateBtn": "SUBMIT CV",
     "location": "EUROPEAN EXPERIENCE · INTERNATIONAL CAPABILITY",
     "scroll": "Scroll to explore",
     "beat1": "THE RIGHT PEOPLE.",
@@ -282,8 +283,18 @@
   },
   "forms": {
     "tabWorkforce": "Request Workforce",
+    "tabCv": "Submit CV",
     "tabContact": "General Contact",
     "close": "Close form",
+    "cvModal": {
+      "title": "Submit Your CV",
+      "subtitle": "Register your profile to be considered for Oil & Gas industrial projects across Europe.",
+      "submitBtn": "Submit CV",
+      "submittingBtn": "Submitting application...",
+      "successTitle": "Application Submitted Successfully!",
+      "successText": "Thank you for sending your resume. The LUMINOUS recruitment team will review your profile and contact you when suitable project opportunities arise.",
+      "whatsappAlt": "Send Application via WhatsApp"
+    },
     "workforce": {
       "title": "Request Industrial Workforce",
       "subtitle": "Provide your project requirements so we can prepare a tailored technical proposal.",
@@ -360,6 +371,177 @@
       "invalidEmail": "Please provide a valid email address.",
       "errorTitle": "Submission Error",
       "errorText": "Could not submit automatically. Please try again or reach out directly to mkt@luminousalley.com or via WhatsApp."
+    }
+  },
+  "workersPage": {
+    "hero": {
+      "eyebrow": "RECRUITMENT & SELECTION",
+      "title": "Build Your Future in Oil & Gas Projects",
+      "description": "LUMINOUS is continuously looking for qualified technical professionals for demanding oil, gas, petrochemical and industrial shutdown projects across Europe.",
+      "cta": "SUBMIT CV"
+    },
+    "expect": {
+      "eyebrow": "VALUES & COMMITMENT",
+      "title": "What You Can Expect from LUMINOUS",
+      "cards": [
+        {
+          "id": "1",
+          "title": "Clear Communication",
+          "description": "Full transparency regarding project requirements, exact location, expected duration, and opportunity conditions."
+        },
+        {
+          "id": "2",
+          "title": "Profile & Skills Assessment",
+          "description": "Thorough analysis of your technical experience and certifications to match you with the most suitable projects."
+        },
+        {
+          "id": "3",
+          "title": "Mobilization Support",
+          "description": "Comprehensive assistance with documentation, travel, and accommodation arrangements where applicable."
+        },
+        {
+          "id": "4",
+          "title": "Continuous Support",
+          "description": "Dedicated operational support throughout the selection process and project mobilization."
+        }
+      ]
+    },
+    "profiles": {
+      "eyebrow": "TECHNICAL SPECIALTIES",
+      "title": "Sought-After Profiles for Oil & Gas",
+      "subtitle": "We select specialists with proven experience in industrial construction, assembly, and maintenance.",
+      "cta": "Register Profile",
+      "list": [
+        {
+          "id": "welders",
+          "title": "Qualified Welders",
+          "subtitle": "TIG · MIG/MAG · MMA / Stick Welding",
+          "description": "Specialists in high-pressure welding, stainless/carbon steel piping, and structural work for platforms and refineries."
+        },
+        {
+          "id": "mechanics",
+          "title": "Industrial Mechanics",
+          "subtitle": "Maintenance · Rotating Equipment · Alignment",
+          "description": "Professionals for assembly, laser alignment, and maintenance of pumps, compressors, and industrial turbines."
+        },
+        {
+          "id": "pipefitters",
+          "title": "Pipefitters / Tubistas",
+          "subtitle": "Fabrication · Isometrics · Piping Assembly",
+          "description": "Rigorous isometric reading, marking, cutting, beveling, and assembly of spools and process piping lines."
+        },
+        {
+          "id": "riggers",
+          "title": "Riggers & Assemblers",
+          "subtitle": "Heavy Lifting · Metal Structures",
+          "description": "Structural assembly, rigging, and heavy load lifting strictly adhering to international safety standards."
+        },
+        {
+          "id": "boilermakers",
+          "title": "Industrial Boilermakers",
+          "subtitle": "Fabrication · Pressure Vessels · Heat Exchangers",
+          "description": "Fabrication, repair, and maintenance of pressure vessels, fractionating columns, heat exchangers, and tanks."
+        },
+        {
+          "id": "instrumentists",
+          "title": "Instrument Technicians & Electricians",
+          "subtitle": "Automation · Calibration · ATEX Zones",
+          "description": "Installation and calibration of pressure/temperature instruments and electrical systems in ATEX hazardous areas."
+        },
+        {
+          "id": "scaffolders",
+          "title": "Scaffolders & Operators",
+          "subtitle": "Scaffold Erection · Operational Support",
+          "description": "Assembly and dismantling of industrial scaffolding structures for scheduled shutdowns and high-altitude work."
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "STEP BY STEP",
+      "title": "How Registering Your Profile Works",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Submit Your Resume",
+          "description": "Fill out the form below with your updated details and attach your CV in PDF or Word."
+        },
+        {
+          "number": "02",
+          "title": "Technical Evaluation",
+          "description": "Our specialized recruitment team reviews your certifications and professional background."
+        },
+        {
+          "number": "03",
+          "title": "Project Matching",
+          "description": "We match your profile against active job openings and mobilizations across Europe."
+        },
+        {
+          "number": "04",
+          "title": "Contact & Validation",
+          "description": "We contact you directly to validate details and initiate the onboarding process."
+        }
+      ]
+    },
+    "form": {
+      "eyebrow": "CANDIDATE REGISTRATION",
+      "title": "Register Your Professional Profile",
+      "subtitle": "Enter your details below to join our technical talent network for the Oil & Gas sector.",
+      "nameLabel": "Full Name *",
+      "namePlaceholder": "Your full name",
+      "emailLabel": "Contact Email *",
+      "emailPlaceholder": "your.email@example.com",
+      "phoneLabel": "Phone / WhatsApp (with country code) *",
+      "phonePlaceholder": "+351 912 345 678",
+      "residenceLabel": "Country of Residence *",
+      "residenceOptions": {
+        "pt": "Portugal",
+        "es": "Spain",
+        "fr": "France",
+        "it": "Italy",
+        "be": "Belgium",
+        "de": "Germany",
+        "other": "Other Country"
+      },
+      "nationalityLabel": "Nationality",
+      "nationalityPlaceholder": "e.g. Portuguese, Brazilian, etc.",
+      "mobilityLabel": "Availability to work in other European countries *",
+      "mobilityOptions": {
+        "yes": "Yes, full availability",
+        "no": "No, country of residence only",
+        "depends": "Depends on project duration and conditions"
+      },
+      "specialtiesLabel": "Professional Specialties (Select one or more) *",
+      "experienceLabel": "Years of Experience in the Field *",
+      "experienceOptions": {
+        "lt1": "Less than 1 year",
+        "1to3": "1 to 3 years",
+        "3to5": "3 to 5 years",
+        "gt5": "More than 5 years of experience"
+      },
+      "otherSpecialtyLabel": "Specify Other Specialty",
+      "otherSpecialtyPlaceholder": "Specify here if your specialty is not listed above...",
+      "summaryLabel": "Summary of Professional Experience & Qualifications",
+      "summaryPlaceholder": "Describe your recent projects in Oil & Gas/industry, certifications (e.g. VCA, Welding), and relevant qualifications...",
+      "languagesLabel": "Languages Spoken",
+      "languages": ["Portuguese", "Spanish", "French", "Italian", "German", "English", "Other"],
+      "uploadTitle": "Resume Attachment (CV) *",
+      "uploadDesc": "Drag and drop your file here or click to browse",
+      "uploadHint": "Supported formats: PDF, DOC, DOCX (up to 10MB)",
+      "fileSelected": "File selected:",
+      "removeFile": "Remove file",
+      "rgpdConsent": "I agree to the processing of my personal data under the Privacy Policy (GDPR) for recruitment purposes. *",
+      "databaseConsent": "I authorize LUMINOUS to keep my profile in its database for future project opportunities.",
+      "submitBtn": "Submit Resume",
+      "submittingBtn": "Submitting application...",
+      "successTitle": "Application Submitted Successfully!",
+      "successText": "Thank you for sending your resume. The LUMINOUS recruitment team will review your profile and contact you when suitable project opportunities arise.",
+      "whatsappCta": "Send Application via WhatsApp"
+    },
+    "finalCta": {
+      "title": "Have Questions? Speak with Our Team",
+      "subtitle": "Do you need additional information about our job opportunities or industrial partnerships?",
+      "btnContact": "Contact Us",
+      "btnWhatsapp": "WhatsApp Support"
     }
   }
 }

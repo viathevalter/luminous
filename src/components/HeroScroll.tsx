@@ -120,8 +120,15 @@ export function HeroScroll() {
             >
               {t('hero.primary')} <span className="btn-arrow">→</span>
             </a>
-            <a className="btn btn-secondary" href="#industries">
-              {t('hero.secondary')} <span className="btn-arrow">→</span>
+            <a
+              className="btn btn-outline-candidate"
+              href="#trabalhadores"
+              onClick={(e) => {
+                e.preventDefault()
+                openFormModal({ mode: 'cv' })
+              }}
+            >
+              {t('hero.candidateBtn')} <span className="btn-arrow">→</span>
             </a>
           </div>
           <p className="location-line">{t('hero.location')}</p>

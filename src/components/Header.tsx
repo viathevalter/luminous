@@ -33,6 +33,7 @@ export function Header() {
           <a href="#top">{t('nav.home')}</a>
           <a href="#industries">{t('nav.industries')}</a>
           <a href="#workforce">{t('nav.workforce')}</a>
+          <a href="#trabalhadores">{t('nav.workers', { defaultValue: 'Trabalhadores' })}</a>
           <a href="#about">{t('nav.about')}</a>
           <a
             href="#contact"

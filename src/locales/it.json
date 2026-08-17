@@ -3,6 +3,7 @@
     "home": "Home",
     "industries": "Settori",
     "workforce": "Professionisti",
+    "workers": "Lavoratori",
     "about": "Chi siamo",
     "contact": "Contatti"
   },
@@ -11,7 +12,7 @@
     "title": "Le squadre dietro i grandi progetti industriali.",
     "description": "Squadre tecniche qualificate per progetti oil & gas, petrolchimici e industriali, supportate da una solida esperienza in tutta Europa.",
     "primary": "RICHIEDI PERSONALE",
-    "secondary": "SCOPRI LE COMPETENZE",
+    "candidateBtn": "INVIA CV",
     "location": "ESPERIENZA EUROPEA · CAPACITÀ INTERNAZIONALE",
     "scroll": "Scorri per esplorare",
     "beat1": "LE PERSONE GIUSTE.",
@@ -281,8 +282,18 @@
   },
   "forms": {
     "tabWorkforce": "Richiedi Personale",
+    "tabCv": "Invia CV",
     "tabContact": "Contatto Generale",
     "close": "Chiudi modulo",
+    "cvModal": {
+      "title": "Invia il Tuo CV",
+      "subtitle": "Registra il tuo profilo per essere considerato per progetti Oil & Gas in tutta Europa.",
+      "submitBtn": "Invia CV",
+      "submittingBtn": "Invio candidatura in corso...",
+      "successTitle": "Candidatura Inviata con Successo!",
+      "successText": "Grazie per aver inviato il tuo curriculum. Il team di selezione LUMINOUS esaminerà il tuo profilo e ti contatterà non appena saranno disponibili opportunità idonee.",
+      "whatsappAlt": "Invia Candidatura via WhatsApp"
+    },
     "workforce": {
       "title": "Richiedi Manodopera Industriale",
       "subtitle": "Indica le esigenze del tuo progetto per consentirci di elaborare una proposta tecnica su misura.",
@@ -359,6 +370,177 @@
       "invalidEmail": "Si prega di inserire un indirizzo email valido.",
       "errorTitle": "Errore durante l'invio",
       "errorText": "Invio automatico non riuscito. Riprova o contattaci direttamente a mkt@luminousalley.com o via WhatsApp."
+    }
+  },
+  "workersPage": {
+    "hero": {
+      "eyebrow": "RECLUTAMENTO E SELEZIONE",
+      "title": "Costruisci il Tuo Futuro in Progetti Oil & Gas",
+      "description": "LUMINOUS è costantemente alla ricerca di professionisti tecnici qualificati per progetti esigenti di petrolio, gas, petrolchimica e fermate industriali in tutta Europa.",
+      "cta": "INVIA CV"
+    },
+    "expect": {
+      "eyebrow": "VALORI E IMPEGNO",
+      "title": "Cosa Puoi Aspettarti da LUMINOUS",
+      "cards": [
+        {
+          "id": "1",
+          "title": "Comunicazione Chiara",
+          "description": "Totale trasparenza sui requisiti del progetto, ubicazione esatta, durata prevista e condizioni dell'opportunità."
+        },
+        {
+          "id": "2",
+          "title": "Valutazione del Profilo e delle Competenze",
+          "description": "Analisi rigorosa della tua esperienza tecnica e delle certificazioni per inserirti nei progetti più idonei."
+        },
+        {
+          "id": "3",
+          "title": "Supporto nella Mobilitazione",
+          "description": "Assistenza completa nella gestione della documentazione, degli spostamenti e dell'alloggio se applicabile."
+        },
+        {
+          "id": "4",
+          "title": "Supporto Continuo",
+          "description": "Assistenza costante da parte del nostro team operativo durante tutto il processo di selezione e mobilitazione."
+        }
+      ]
+    },
+    "profiles": {
+      "eyebrow": "SPECIALIZZAZIONI TECNICHE",
+      "title": "Profili Ricercati per Oil & Gas",
+      "subtitle": "Selezioniamo specialisti con comprovata esperienza nella costruzione, montaggio e manutenzione industriale.",
+      "cta": "Registra Profilo",
+      "list": [
+        {
+          "id": "welders",
+          "title": "Saldatori Qualificati",
+          "subtitle": "TIG · MIG/MAG · MMA / Elettrodo Rivestito",
+          "description": "Specialisti in saldatura ad alta pressione, tubazioni inox/acciaio al carbonio e strutture per piattaforme e raffinerie."
+        },
+        {
+          "id": "mechanics",
+          "title": "Meccanici Industriali",
+          "subtitle": "Manutenzione · Macchine Rotanti · Allineamento",
+          "description": "Professionisti per il montaggio, allineamento laser e manutenzione di pompe, compressori e turbine industriali."
+        },
+        {
+          "id": "pipefitters",
+          "title": "Tubisti / Pipefitters",
+          "subtitle": "Fabbricazione · Assonometrici · Montaggio Tubazioni",
+          "description": "Lettura rigorosa degli assonometrici, tracciatura, taglio, cianfrinatura e montaggio di spool e linee di processo."
+        },
+        {
+          "id": "riggers",
+          "title": "Montatori / Riggers",
+          "subtitle": "Movimentazione Carichi · Strutture Metalliche",
+          "description": "Montaggio strutturale, imbracatura e sollevamento di grandi carichi nel rispetto dei più severi standard di sicurezza."
+        },
+        {
+          "id": "boilermakers",
+          "title": "Calderai Industriali",
+          "subtitle": "Fabbricazione · Recipienti a Pressione · Scambiatori",
+          "description": "Fabbricazione, riparazione e manutenzione di recipienti a pressione, colonne di frazionamento e serbatoi."
+        },
+        {
+          "id": "instrumentists",
+          "title": "Strumentisti ed Elettricisti",
+          "subtitle": "Automazione · Taratura · Zone ATEX",
+          "description": "Installazione e taratura di strumenti di misurazione di pressione/temperatura e impianti elettrici in zone ATEX."
+        },
+        {
+          "id": "scaffolders",
+          "title": "Ponteggiatori ed Operatori",
+          "subtitle": "Montaggio Ponteggi · Supporto Operativo",
+          "description": "Montaggio e smontaggio di strutture di ponteggio industriale per fermate programmate e lavori in quota."
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "PASSO DOPO PASSO",
+      "title": "Come Funziona la Registrazione del Tuo Profilo",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Invio del Curriculum",
+          "description": "Compila il modulo sottostante con i tuoi dati aggiornati ed allega il tuo CV in formato PDF o Word."
+        },
+        {
+          "number": "02",
+          "title": "Valutazione Tecnica",
+          "description": "Il nostro team di selezione specializzato analizza le tue certificazioni ed il tuo percorso professionale."
+        },
+        {
+          "number": "03",
+          "title": "Compatibilità di Progetto",
+          "description": "Incrociamo il tuo profilo con le posizioni e le mobilitazioni attive in tutta Europa."
+        },
+        {
+          "number": "04",
+          "title": "Contatto e Validazione",
+          "description": "Ti contattiamo direttamente per verificare i dettagli ed avviare il processo di inserimento."
+        }
+      ]
+    },
+    "form": {
+      "eyebrow": "REGISTRAZIONE CANDIDATI",
+      "title": "Registra il Tuo Profilo Professionale",
+      "subtitle": "Inserisci i tuoi dati per entrare nella nostra rete di talenti tecnici per il settore Oil & Gas.",
+      "nameLabel": "Nome Completo *",
+      "namePlaceholder": "Il tuo nome completo",
+      "emailLabel": "Email di Contatto *",
+      "emailPlaceholder": "la.tua.email@esempio.com",
+      "phoneLabel": "Telefono / WhatsApp (con prefisso) *",
+      "phonePlaceholder": "+39 312 345 6789",
+      "residenceLabel": "Paese di Residenza *",
+      "residenceOptions": {
+        "pt": "Portogallo",
+        "es": "Spagna",
+        "fr": "Francia",
+        "it": "Italia",
+        "be": "Belgio",
+        "de": "Germania",
+        "other": "Altro Paese"
+      },
+      "nationalityLabel": "Nazionalità",
+      "nationalityPlaceholder": "Es: Italiana, Portoghese, ecc.",
+      "mobilityLabel": "Disponibilità a lavorare in altri paesi europei *",
+      "mobilityOptions": {
+        "yes": "Sì, totale disponibilità",
+        "no": "No, solo nel paese di residenza",
+        "depends": "Dipende dalla durata e dalle condizioni del progetto"
+      },
+      "specialtiesLabel": "Specializzazioni Professionali (Seleziona una o più) *",
+      "experienceLabel": "Anni di Esperienza nel Settore *",
+      "experienceOptions": {
+        "lt1": "Meno di 1 anno",
+        "1to3": "Da 1 a 3 anni",
+        "3to5": "Da 3 a 5 anni",
+        "gt5": "Più di 5 anni di esperienza"
+      },
+      "otherSpecialtyLabel": "Specifica Altra Specializzazione",
+      "otherSpecialtyPlaceholder": "Indica qui se la tua specializzazione non è presente nell'elenco...",
+      "summaryLabel": "Riepilogo dell'Esperienza Professionale e Qualifiche",
+      "summaryPlaceholder": "Descrivi i tuoi ultimi progetti in Oil & Gas/industria, certificazioni (es. VCA, Saldatura) e qualifiche rilevanti...",
+      "languagesLabel": "Lingue Parlate",
+      "languages": ["Portoghese", "Spagnolo", "Francese", "Italiano", "Tedesco", "Inglese", "Altro"],
+      "uploadTitle": "Allegato Curriculum (CV) *",
+      "uploadDesc": "Trascina e rilascia il tuo file qui oppure clicca per cercare",
+      "uploadHint": "Formati supportati: PDF, DOC, DOCX (fino a 10MB)",
+      "fileSelected": "File selezionato:",
+      "removeFile": "Rimuovi file",
+      "rgpdConsent": "Accetto il trattamento dei miei dati personali ai sensi dell'Informativa sulla Privacy (GDPR) ai fini della selezione. *",
+      "databaseConsent": "Autorizzo LUMINOUS a conservare il mio profilo nel database per future opportunità di progetto.",
+      "submitBtn": "Invia Curriculum",
+      "submittingBtn": "Invio candidatura in corso...",
+      "successTitle": "Candidatura Inviata con Successo!",
+      "successText": "Grazie per aver inviato il tuo curriculum. Il team di selezione LUMINOUS esaminerà il tuo profilo e ti contatterà non appena saranno disponibili opportunità idonee.",
+      "whatsappCta": "Invia Candidatura via WhatsApp"
+    },
+    "finalCta": {
+      "title": "Hai Domande? Parla con il Nostro Team",
+      "subtitle": "Hai bisogno di informazioni aggiuntive sulle nostre opportunità di lavoro o sulle partnership industriali?",
+      "btnContact": "Contatta il Team",
+      "btnWhatsapp": "Assistenza WhatsApp"
     }
   }
 }

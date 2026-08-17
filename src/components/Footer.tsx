@@ -47,14 +47,8 @@ export function Footer() {
               <a href="#about">{t('nav.about')}</a>
             </li>
             <li>
-              <a
-                href="#careers"
-                onClick={(e) => {
-                  e.preventDefault()
-                  openFormModal({ mode: 'contact' })
-                }}
-              >
-                {t('careers.eyebrow')}
+              <a href="#trabalhadores">
+                {t('nav.workers', { defaultValue: 'Trabalhadores' })}
               </a>
             </li>
             <li>
