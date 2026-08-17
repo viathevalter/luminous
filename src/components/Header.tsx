@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { openFormModal } from './FormModal'
 
 const langs = ['en', 'pt', 'es', 'it'] as const
 
@@ -33,7 +34,15 @@ export function Header() {
           <a href="#industries">{t('nav.industries')}</a>
           <a href="#workforce">{t('nav.workforce')}</a>
           <a href="#about">{t('nav.about')}</a>
-          <a href="#contact">{t('nav.contact')}</a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              openFormModal({ mode: 'contact' })
+            }}
+          >
+            {t('nav.contact')}
+          </a>
         </nav>
         <div className="language-switcher" aria-label="Language selector">
           {langs.map((lang) => (

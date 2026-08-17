@@ -2755,3 +2755,501 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     right: 0;
   }
 }
+
+/* ==========================================================================
+   LUMINOUS PREMIUM FORM MODAL (Workforce & Contact Forms)
+   ========================================================================== */
+.form-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(2, 7, 13, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.form-modal-container {
+  width: 100%;
+  max-width: 760px;
+  max-height: 92vh;
+  background: linear-gradient(160deg, #0d1e2e 0%, #050d17 100%);
+  border: 1px solid rgba(255, 180, 43, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 180, 43, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Modal Header & Tabs */
+.form-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: #081522;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 16px;
+}
+
+.form-modal-tabs {
+  display: flex;
+  gap: 8px;
+  background: #040a12;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.form-modal-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 7px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-modal-tab:hover {
+  color: #ffffff;
+}
+
+.form-modal-tab.is-active {
+  background: var(--color-accent);
+  color: #06111b;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(255, 180, 43, 0.28);
+}
+
+.form-modal-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.form-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Modal Body */
+.form-modal-body {
+  padding: 28px 32px 32px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 180, 43, 0.3) transparent;
+}
+
+.form-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 180, 43, 0.3);
+  border-radius: 6px;
+}
+
+/* Form Intro block */
+.form-intro-block {
+  margin-bottom: 24px;
+}
+
+.form-intro-block h3 {
+  font-size: 1.45rem;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.form-intro-block p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Error Alert */
+.form-error-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.form-grid-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+}
+
+.form-field-group .field-hint {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: #06121e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-accent);
+  background: #081726;
+  box-shadow: 0 0 0 3px rgba(255, 180, 43, 0.18);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #081726;
+  color: #ffffff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Multi-select Technical Chips */
+.form-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.form-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #081827;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-chip:hover {
+  border-color: var(--color-accent);
+  color: #ffffff;
+  background: #0c2135;
+}
+
+.form-chip.is-selected {
+  background: rgba(255, 180, 43, 0.18);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.chip-check {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Submit Row */
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-secure-badge {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+.form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.form-btn-primary {
+  background: var(--color-accent);
+  color: #06111b;
+  box-shadow: 0 4px 18px rgba(255, 180, 43, 0.25);
+}
+
+.form-btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(255, 180, 43, 0.38);
+}
+
+.form-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-btn-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
+}
+
+.form-btn-whatsapp:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.form-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.form-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Spinner inside button */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(6, 17, 27, 0.3);
+  border-top-color: #06111b;
+  border-radius: 50%;
+  animation: spinLoader 0.7s linear infinite;
+}
+
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+
+/* Success Card */
+.form-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 16px 16px;
+  gap: 14px;
+}
+
+.form-success-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.35);
+  animation: successPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.form-success-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.form-success-card h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+.form-success-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.form-success-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #081726;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.form-dest-label {
+  color: var(--color-text-muted);
+}
+
+.form-dest-value {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.form-success-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Modal Responsive Queries */
+@media (max-width: 680px) {
+  .form-modal-overlay {
+    padding: 12px;
+  }
+
+  .form-modal-body {
+    padding: 20px 18px 24px;
+  }
+
+  .form-modal-header {
+    padding: 14px 18px;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-modal-tabs {
+    width: 100%;
+  }
+
+  .form-modal-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .form-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-btn-primary {
+    width: 100%;
+  }
+
+  .form-secure-badge {
+    text-align: center;
+  }
+
+  .form-success-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-btn {
+    width: 100%;
+  }
+}
+

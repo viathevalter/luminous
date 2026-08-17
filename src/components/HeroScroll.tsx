@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { openFormModal } from './FormModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -109,7 +110,14 @@ export function HeroScroll() {
           <h1>{t('hero.title')}</h1>
           <p className="hero-description">{t('hero.description')}</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">
+            <a
+              className="btn btn-primary"
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                openFormModal({ mode: 'workforce' })
+              }}
+            >
               {t('hero.primary')} <span className="btn-arrow">→</span>
             </a>
             <a className="btn btn-secondary" href="#industries">

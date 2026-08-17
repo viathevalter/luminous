@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { openFormModal } from './FormModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -65,7 +66,14 @@ export function Careers() {
 
         {/* Careers CTA */}
         <div className="careers-cta-row careers-fade-in">
-          <a className="btn btn-primary" href="#contact">
+          <a
+            className="btn btn-primary"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              openFormModal({ mode: 'contact' })
+            }}
+          >
             {cta} <span className="btn-arrow">→</span>
           </a>
         </div>

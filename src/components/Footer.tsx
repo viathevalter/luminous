@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
+import { openFormModal } from './FormModal'
 
-// TODO: replace contact placeholders with real Luminous contact details (email, phone, address, WhatsApp).
 export function Footer() {
   const { t } = useTranslation()
 
@@ -47,10 +47,26 @@ export function Footer() {
               <a href="#about">{t('nav.about')}</a>
             </li>
             <li>
-              <a href="#careers">{t('careers.eyebrow')}</a>
+              <a
+                href="#careers"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openFormModal({ mode: 'contact' })
+                }}
+              >
+                {t('careers.eyebrow')}
+              </a>
             </li>
             <li>
-              <a href="#contact">{t('nav.contact')}</a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openFormModal({ mode: 'contact' })
+                }}
+              >
+                {t('nav.contact')}
+              </a>
             </li>
           </ul>
         </div>
@@ -80,15 +96,21 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Col 4: Centralized Contact Placeholders */}
+        {/* Col 4: Centralized Contact Details */}
         <div className="footer-col contact-col">
           <h4 className="footer-col-title">{contactTitle}</h4>
           <div className="footer-contact-details">
-            {/* TODO: replace contact placeholders with real Luminous contact details */}
             <div className="footer-contact-item">
               <span className="contact-label">EMAIL</span>
-              <a className="contact-link" href="mailto:contact@luminous.com">
-                contact@luminous.com
+              <a
+                className="contact-link"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openFormModal({ mode: 'contact' })
+                }}
+              >
+                mkt@luminousalley.com
               </a>
             </div>
             <div className="footer-contact-item">

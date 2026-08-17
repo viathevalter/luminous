@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { openFormModal } from './FormModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,10 +48,24 @@ export function FinalCTA() {
         <h2 className="cta-fade-in">{title}</h2>
         <p className="cta-fade-in">{description}</p>
         <div className="cta-actions cta-fade-in">
-          <a className="btn btn-primary" href="mailto:contact@luminous.com">
+          <a
+            className="btn btn-primary"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              openFormModal({ mode: 'workforce' })
+            }}
+          >
             {primary} <span className="btn-arrow">→</span>
           </a>
-          <a className="btn btn-secondary" href="#contact">
+          <a
+            className="btn btn-secondary"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              openFormModal({ mode: 'contact' })
+            }}
+          >
             {secondary}
           </a>
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { openFormModal } from './FormModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -123,7 +124,14 @@ export function WorkforceDelivery() {
 
             <div className="del-cta-block">
               <p className="del-cta-label">{ctaHeading}</p>
-              <a className="btn btn-primary" href="#contact">
+              <a
+                className="btn btn-primary"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openFormModal({ mode: 'workforce' })
+                }}
+              >
                 {ctaButton} <span className="btn-arrow">→</span>
               </a>
             </div>
@@ -210,7 +218,14 @@ export function WorkforceDelivery() {
 
         <div className="del-mobile-cta">
           <h3>{ctaHeading}</h3>
-          <a className="btn btn-primary" href="#contact">
+          <a
+            className="btn btn-primary"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              openFormModal({ mode: 'workforce' })
+            }}
+          >
             {ctaButton} <span className="btn-arrow">→</span>
           </a>
         </div>

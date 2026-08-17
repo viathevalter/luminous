@@ -279,5 +279,87 @@
       "supervisors": "Supervisors / Foremen",
       "otherRole": "Other Technical Profiles"
     }
+  },
+  "forms": {
+    "tabWorkforce": "Request Workforce",
+    "tabContact": "General Contact",
+    "close": "Close form",
+    "workforce": {
+      "title": "Request Industrial Workforce",
+      "subtitle": "Provide your project requirements so we can prepare a tailored technical proposal.",
+      "nameLabel": "Contact Person / Name *",
+      "namePlaceholder": "e.g. John Doe, Project Lead",
+      "companyLabel": "Company Name *",
+      "companyPlaceholder": "Your company name",
+      "emailLabel": "Corporate Email *",
+      "emailPlaceholder": "name@company.com",
+      "phoneLabel": "Phone / WhatsApp *",
+      "phonePlaceholder": "+44 7123 456789",
+      "sectorLabel": "Industrial Sector *",
+      "sectorPlaceholder": "Select sector...",
+      "rolesLabel": "Required Technical Roles *",
+      "rolesHint": "Select one or more specialties:",
+      "headcountLabel": "Estimated Team Size",
+      "headcountPlaceholder": "Select workforce size...",
+      "headcountOptions": {
+        "opt1": "1 to 4 professionals",
+        "opt2": "5 to 15 professionals",
+        "opt3": "16 to 30 professionals",
+        "opt4": "Over 30 professionals",
+        "opt5": "TBD / Initial Inquiry"
+      },
+      "locationLabel": "Project Location / Country *",
+      "locationPlaceholder": "e.g. Antwerp (Belgium), Rotterdam (NL), etc.",
+      "startDateLabel": "Estimated Start Timeline",
+      "startDatePlaceholder": "Select timeline...",
+      "startDateOptions": {
+        "immediate": "Immediate (< 15 days)",
+        "month1": "Within 1 month",
+        "month2_3": "In 2 to 3 months",
+        "tender": "Tender / Estimation Stage"
+      },
+      "messageLabel": "Additional Project Requirements",
+      "messagePlaceholder": "Describe technical specifications, required certifications, shifts, estimated duration, etc.",
+      "submitBtn": "Submit Workforce Request",
+      "submittingBtn": "Submitting request...",
+      "successTitle": "Request Received Successfully!",
+      "successText": "Thank you for reaching out. The Luminous operational team will review your requirements and respond within 24 hours.",
+      "whatsappAlt": "Fast-track via WhatsApp"
+    },
+    "contact": {
+      "title": "Contact Luminous",
+      "subtitle": "Send us a message for general inquiries, commercial partnerships, or further information.",
+      "nameLabel": "Full Name *",
+      "namePlaceholder": "Your full name",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Company name (optional)",
+      "emailLabel": "Email Address *",
+      "emailPlaceholder": "your.email@example.com",
+      "phoneLabel": "Phone / WhatsApp *",
+      "phonePlaceholder": "+44 7123 456789",
+      "subjectLabel": "Subject / Purpose *",
+      "subjectPlaceholder": "Select subject...",
+      "subjectOptions": {
+        "workforce": "Workforce Solutions / Hiring",
+        "careers": "Recruitment / Submit CV",
+        "partnerships": "Commercial Partnerships & Suppliers",
+        "info": "General Information",
+        "other": "Other Subject"
+      },
+      "messageLabel": "Message *",
+      "messagePlaceholder": "How can we assist your business?",
+      "submitBtn": "Send Message",
+      "submittingBtn": "Sending message...",
+      "successTitle": "Message Sent Successfully!",
+      "successText": "Thank you for getting in touch. Our team will get back to you shortly.",
+      "whatsappAlt": "Chat directly on WhatsApp"
+    },
+    "validation": {
+      "required": "Please fill in all required fields (*).",
+      "selectRole": "Please select at least one technical specialty.",
+      "invalidEmail": "Please provide a valid email address.",
+      "errorTitle": "Submission Error",
+      "errorText": "Could not submit automatically. Please try again or reach out directly to mkt@luminousalley.com or via WhatsApp."
+    }
   }
 }

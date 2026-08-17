@@ -279,5 +279,87 @@
       "supervisors": "Supervisores / Chefes de Equipa",
       "otherRole": "Outros Perfis Técnicos"
     }
+  },
+  "forms": {
+    "tabWorkforce": "Solicitar Mão de Obra",
+    "tabContact": "Contacto Geral",
+    "close": "Fechar formulário",
+    "workforce": {
+      "title": "Solicitar Profissionais Industriais",
+      "subtitle": "Indique as necessidades do seu projeto para prepararmos uma proposta técnica sob medida.",
+      "nameLabel": "Nome do Responsável *",
+      "namePlaceholder": "Ex: Eng. Carlos Silva",
+      "companyLabel": "Empresa *",
+      "companyPlaceholder": "Nome da sua empresa",
+      "emailLabel": "E-mail Corporativo *",
+      "emailPlaceholder": "seu.email@empresa.com",
+      "phoneLabel": "Telefone / WhatsApp *",
+      "phonePlaceholder": "+351 912 345 678",
+      "sectorLabel": "Setor Industrial *",
+      "sectorPlaceholder": "Selecione o setor...",
+      "rolesLabel": "Perfis Técnicos Necessários *",
+      "rolesHint": "Selecione uma ou mais especialidades:",
+      "headcountLabel": "Quantidade Estimada de Profissionais",
+      "headcountPlaceholder": "Selecione a dimensão da equipa...",
+      "headcountOptions": {
+        "opt1": "1 a 4 profissionais",
+        "opt2": "5 a 15 profissionais",
+        "opt3": "16 a 30 profissionais",
+        "opt4": "Mais de 30 profissionais",
+        "opt5": "A definir / Apenas consulta"
+      },
+      "locationLabel": "Localização do Projeto / País *",
+      "locationPlaceholder": "Ex: Sines (Portugal), Antuérpia (Bélgica), etc.",
+      "startDateLabel": "Previsão de Início",
+      "startDatePlaceholder": "Selecione a previsão...",
+      "startDateOptions": {
+        "immediate": "Imediato (< 15 dias)",
+        "month1": "Em 1 mês",
+        "month2_3": "Em 2 a 3 meses",
+        "tender": "Fase de Cotação / Concurso"
+      },
+      "messageLabel": "Detalhes Adicionais do Projeto",
+      "messagePlaceholder": "Descreva requisitos específicos, certificações necessárias, turnos, duração estimada, etc.",
+      "submitBtn": "Enviar Solicitação de Mão de Obra",
+      "submittingBtn": "A enviar solicitação...",
+      "successTitle": "Solicitação Recebida com Sucesso!",
+      "successText": "Agradecemos o seu contacto. A equipa operacional da Luminous analisará os requisitos e responderá em até 24 horas.",
+      "whatsappAlt": "Agilizar atendimento via WhatsApp"
+    },
+    "contact": {
+      "title": "Fale com a Luminous",
+      "subtitle": "Envie-nos uma mensagem para esclarecer dúvidas, estabelecer parcerias ou solicitar informações.",
+      "nameLabel": "Nome Completo *",
+      "namePlaceholder": "Seu nome",
+      "companyLabel": "Empresa",
+      "companyPlaceholder": "Nome da empresa (opcional)",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "seu.email@exemplo.com",
+      "phoneLabel": "Telefone / WhatsApp *",
+      "phonePlaceholder": "+351 912 345 678",
+      "subjectLabel": "Assunto / Motivo *",
+      "subjectPlaceholder": "Selecione o assunto...",
+      "subjectOptions": {
+        "workforce": "Contratação de Mão de Obra",
+        "careers": "Recrutamento / Enviar Candidatura",
+        "partnerships": "Parcerias Comerciais & Fornecedores",
+        "info": "Informações Gerais",
+        "other": "Outro Assunto"
+      },
+      "messageLabel": "Mensagem *",
+      "messagePlaceholder": "Como podemos ajudar o seu negócio?",
+      "submitBtn": "Enviar Mensagem",
+      "submittingBtn": "A enviar mensagem...",
+      "successTitle": "Mensagem Enviada com Sucesso!",
+      "successText": "Obrigado por nos contactar. Responderemos à sua mensagem o mais brevemente possível.",
+      "whatsappAlt": "Falar diretamente pelo WhatsApp"
+    },
+    "validation": {
+      "required": "Por favor, preencha todos os campos obrigatórios (*).",
+      "selectRole": "Por favor, selecione pelo menos um perfil técnico.",
+      "invalidEmail": "Por favor, insira um e-mail válido.",
+      "errorTitle": "Ocorreu um erro no envio",
+      "errorText": "Não foi possível enviar automaticamente. Pode tentar novamente ou contactar-nos diretamente através do e-mail mkt@luminousalley.com ou pelo WhatsApp."
+    }
   }
 }
