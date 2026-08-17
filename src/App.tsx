@@ -8,6 +8,7 @@ import { AboutLuminous } from './components/AboutLuminous'
 import { Careers } from './components/Careers'
 import { FinalCTA } from './components/FinalCTA'
 import { Footer } from './components/Footer'
+import { ChatWidget } from './components/ChatWidget'
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   )
 }
+
