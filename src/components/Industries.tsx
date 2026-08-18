@@ -388,7 +388,7 @@ export function Industries() {
         {/* Final Section Message Banner */}
         <div className="ind-final-banner site-container">
           <h3>{finalBanner}</h3>
-          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
+          <p className="eyebrow">{t('industries.bannerLabel', { defaultValue: 'LUMINOUS INDUSTRIES' })}</p>
         </div>
       </div>
 
@@ -449,7 +449,7 @@ export function Industries() {
 
         <div className="ind-mobile-final">
           <h3>{finalBanner}</h3>
-          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
+          <p className="eyebrow">{t('industries.bannerLabel', { defaultValue: 'LUMINOUS INDUSTRIES' })}</p>
         </div>
       </div>
     </section>

@@ -26,8 +26,8 @@ export function Footer() {
               height="75"
             />
           </a>
-          <p className="footer-tagline">Industrial Workforce Solutions</p>
-          <p className="footer-subtext">European experience. International capability.</p>
+          <p className="footer-tagline">{t('footer.tagline', { defaultValue: 'Industrial Workforce Solutions' })}</p>
+          <p className="footer-subtext">{t('footer.subtext', { defaultValue: 'European experience. International capability.' })}</p>
         </div>
 
         {/* Col 2: Navigation Links */}
@@ -69,24 +69,12 @@ export function Footer() {
         <div className="footer-col">
           <h4 className="footer-col-title">{indTitle}</h4>
           <ul className="footer-nav-list">
-            <li>
-              <a href="#industries">Oil & Gas</a>
-            </li>
-            <li>
-              <a href="#industries">Petrochemical</a>
-            </li>
-            <li>
-              <a href="#industries">Refineries</a>
-            </li>
-            <li>
-              <a href="#industries">Energy</a>
-            </li>
-            <li>
-              <a href="#industries">Shipyards & Marine</a>
-            </li>
-            <li>
-              <a href="#industries">Industrial Construction</a>
-            </li>
+            {Array.isArray(t('industries.sectors', { returnObjects: true })) &&
+              (t('industries.sectors', { returnObjects: true }) as Array<{ id: string; title: string }>).map((sec, i) => (
+                <li key={sec.id || i}>
+                  <a href="#industries">{sec.title}</a>
+                </li>
+              ))}
           </ul>
         </div>
 
@@ -109,11 +97,11 @@ export function Footer() {
             </div>
             <div className="footer-contact-item">
               <span className="contact-label">OPERATIONS</span>
-              <span className="contact-value">European Markets</span>
+              <span className="contact-value">{t('footer.operationsVal', { defaultValue: 'European Markets' })}</span>
             </div>
             <div className="footer-contact-item">
               <span className="contact-label">RESPONSE TIME</span>
-              <span className="contact-value">24h Operational Response</span>
+              <span className="contact-value">{t('footer.responseTimeVal', { defaultValue: '24h Operational Response' })}</span>
             </div>
           </div>
         </div>

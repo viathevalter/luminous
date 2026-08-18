@@ -274,7 +274,7 @@ export function WorkforceScroll() {
         {/* Final Section Message Banner */}
         <div className="wf-final-banner site-container">
           <h3>{finalMessage}</h3>
-          <p className="eyebrow">LUMINOUS WORKFORCE</p>
+          <p className="eyebrow">{t('workforce.bannerLabel', { defaultValue: 'LUMINOUS WORKFORCE' })}</p>
         </div>
       </div>
 
@@ -327,7 +327,7 @@ export function WorkforceScroll() {
 
         <div className="wf-mobile-final">
           <h3>{finalMessage}</h3>
-          <p className="eyebrow">LUMINOUS WORKFORCE</p>
+          <p className="eyebrow">{t('workforce.bannerLabel', { defaultValue: 'LUMINOUS WORKFORCE' })}</p>
         </div>
       </div>
     </section>

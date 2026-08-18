@@ -140,7 +140,7 @@ export function EuropeanExperience() {
         {/* Part 2: Editorial 6 European Industrial Markets Timeline (APPROVED - DO NOT ALTER) */}
         <div className="euro-timeline-container euro-fade-in">
           <div className="euro-timeline-label">
-            <span>EUROPEAN INDUSTRIAL MARKETS</span>
+            <span>{t('europeanExperience.marketsLabel', { defaultValue: 'EUROPEAN INDUSTRIAL MARKETS' })}</span>
           </div>
 
           <div className="euro-timeline-track-wrapper">
@@ -165,8 +165,8 @@ export function EuropeanExperience() {
         {/* Part 3: 4 Strategic Capabilities (Refined 2x2 Open Editorial Layout) */}
         <div className="euro-pillars-wrapper">
           <div className="euro-pillars-heading euro-fade-in">
-            <p className="eyebrow">CAPABILITIES</p>
-            <h3>Built around operational capability.</h3>
+            <p className="eyebrow">{t('europeanExperience.capabilitiesLabel', { defaultValue: 'CAPABILITIES' })}</p>
+            <h3>{t('europeanExperience.capabilitiesTitle', { defaultValue: 'Built around operational capability.' })}</h3>
           </div>
           <div className="euro-pillars-grid">
             {Array.isArray(pillars) &&
