@@ -32,13 +32,29 @@ type SectorData = {
   tags: string[]
 }
 
+function LuminousFlameNode({ x, y, isActive }: { x: number; y: number; isActive: boolean }) {
+  const color = isActive ? 'var(--accent)' : 'rgba(255, 255, 255, 0.25)'
+  return (
+    <g transform={`translate(${x}, ${y})`}>
+      <path
+        d="M 0 -6.5 C 0.6 -4.2 3.6 -2 3.6 1.8 C 3.6 4.2 2 5.8 0 5.8 C -2 5.8 -3.6 4.2 -3.6 1.8 C -3.6 -1 1.6 -4.2 0 -6.5 Z"
+        fill={color}
+        style={isActive ? { filter: 'drop-shadow(0 0 5px rgba(255, 180, 43, 0.85))' } : undefined}
+      />
+      <path
+        d="M 0 -2.4 C 0.4 -1 1.4 0 1.4 1.5 C 1.4 2.5 0.8 3.2 0 3.2 C -0.8 3.2 -1.4 2.5 -1.4 1.5 C -1.4 0.4 -0.5 -1.1 0 -2.4 Z"
+        fill="#061525"
+      />
+    </g>
+  )
+}
+
 export function Industries() {
   const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const pathRef = useRef<SVGPathElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [imageStage, setImageStage] = useState<Record<string, number>>({})
-  const [flamePos, setFlamePos] = useState({ x: 0, y: 200 })
 
   const sectors = t('industries.sectors', { returnObjects: true }) as SectorData[]
   const finalBanner = t('industries.finalBanner', { defaultValue: 'ONE INDUSTRIAL PARTNER. MULTIPLE SECTORS.' })
@@ -84,7 +100,6 @@ export function Industries() {
             strokeDasharray: pathLength,
             strokeDashoffset: pathLength,
           })
-          setFlamePos({ x: 0, y: 200 })
         }
 
         // Single Master Timeline pinned for 6000px of industry sector storytelling
@@ -107,17 +122,6 @@ export function Industries() {
               else if (p < 0.80) idx = 4
               else idx = 5
               setActiveIndex(idx)
-
-              // Track end of active golden line loop & position the stylized golden flame icon marker
-              if (pathRef.current) {
-                const totalLen = pathRef.current.getTotalLength() || 1840
-                const frameProgress = Math.min(1, Math.max(0, p / 0.85))
-                const currentDrawnLen = frameProgress * totalLen
-                const point = pathRef.current.getPointAtLength(currentDrawnLen)
-                if (point) {
-                  setFlamePos({ x: point.x, y: point.y })
-                }
-              }
             },
           },
         })
@@ -367,31 +371,14 @@ export function Industries() {
                     strokeLinejoin="round"
                     style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
                   />
-                  {/* Technical Static Nodes along outer image border */}
-                  <circle cx="-380" cy="200" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="200" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="12" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="250" cy="0" r="4" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="500" cy="12" r="4" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="500" cy="438" r="4" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="12" cy="450" r="4" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-
-                  {/* Dynamic Golden Luminous Flame Icon Marker terminating/leading the animated path */}
-                  <g
-                    className="ind-flame-marker-head"
-                    transform={`translate(${flamePos.x}, ${flamePos.y})`}
-                  >
-                    {/* Ambient Outer Flame Glow Aura */}
-                    <circle r="12" fill="rgba(255, 180, 43, 0.22)" />
-                    <circle r="6" fill="rgba(255, 180, 43, 0.45)" />
-
-                    {/* Stylized Luminous Brand Flame Vector Icon */}
-                    <path
-                      d="M 0 -9 C 1.4 -4.5 5.5 -2.2 5.5 2.2 C 5.5 5.8 3.1 8 0 8 C -3.1 8 -5.5 5.8 -5.5 2.2 C -5.5 -1.2 -2.8 -5 0 -9 Z M 0 -3.5 C 0.9 -1.5 2.5 0 2.5 2.2 C 2.5 3.6 1.4 4.8 0 4.8 C -1.4 4.8 -2.5 3.6 -2.5 2.2 C -2.5 0.5 -1.2 -1.8 0 -3.5 Z"
-                      fill="var(--accent)"
-                      style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.95))' }}
-                    />
-                  </g>
+                  {/* Luminous Brand Flame Markers replacing node circles at exact line coordinates */}
+                  <LuminousFlameNode x={-380} y={200} isActive={activeIndex >= 0} />
+                  <LuminousFlameNode x={0} y={200} isActive={activeIndex >= 0} />
+                  <LuminousFlameNode x={0} y={12} isActive={activeIndex >= 0} />
+                  <LuminousFlameNode x={250} y={0} isActive={activeIndex >= 1} />
+                  <LuminousFlameNode x={500} y={12} isActive={activeIndex >= 2} />
+                  <LuminousFlameNode x={500} y={438} isActive={activeIndex >= 3} />
+                  <LuminousFlameNode x={12} y={450} isActive={activeIndex >= 4} />
                 </svg>
               </div>
             </div>
