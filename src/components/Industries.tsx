@@ -387,8 +387,8 @@ export function Industries() {
 
         {/* Final Section Message Banner */}
         <div className="ind-final-banner site-container">
-          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
           <h3>{finalBanner}</h3>
+          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
         </div>
       </div>
 
@@ -448,8 +448,8 @@ export function Industries() {
           })}
 
         <div className="ind-mobile-final">
-          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
           <h3>{finalBanner}</h3>
+          <p className="eyebrow">LUMINOUS INDUSTRIES</p>
         </div>
       </div>
     </section>

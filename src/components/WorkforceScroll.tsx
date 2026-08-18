@@ -273,8 +273,8 @@ export function WorkforceScroll() {
 
         {/* Final Section Message Banner */}
         <div className="wf-final-banner site-container">
-          <p className="eyebrow">LUMINOUS WORKFORCE</p>
           <h3>{finalMessage}</h3>
+          <p className="eyebrow">LUMINOUS WORKFORCE</p>
         </div>
       </div>
 
@@ -326,8 +326,8 @@ export function WorkforceScroll() {
           })}
 
         <div className="wf-mobile-final">
-          <p className="eyebrow">LUMINOUS WORKFORCE</p>
           <h3>{finalMessage}</h3>
+          <p className="eyebrow">LUMINOUS WORKFORCE</p>
         </div>
       </div>
     </section>

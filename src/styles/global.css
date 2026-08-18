@@ -610,7 +610,13 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     font-weight: 400;
     color: #fff;
     letter-spacing: -.02em;
-    margin-top: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .wf-final-banner .eyebrow {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
 
   .wf-mobile-list { display: none; }
@@ -1056,7 +1062,13 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     font-weight: 400;
     color: #fff;
     letter-spacing: -.02em;
-    margin-top: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .ind-final-banner .eyebrow {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
 
   .ind-mobile-list { display: none; }
