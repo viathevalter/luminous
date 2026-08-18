@@ -15,12 +15,12 @@ interface WorkforceProfileConfig {
 }
 
 const workforceProfiles: WorkforceProfileConfig[] = [
-  { id: 'welder', number: '01', label: 'WELDER', image: '/assets/workforce/welder.webp', fallbackSvg: '/assets/workforce/welder.svg', objectPosition: 'center center' },
-  { id: 'pipefitter', number: '02', label: 'PIPEFITTER', image: '/assets/workforce/pipefitter.webp', fallbackSvg: '/assets/workforce/pipefitter.svg', objectPosition: 'center center' },
-  { id: 'boilermaker', number: '03', label: 'BOILERMAKER', image: '/assets/workforce/boilermaker.webp', fallbackSvg: '/assets/workforce/boilermaker.svg', objectPosition: 'center center' },
-  { id: 'mechanic', number: '04', label: 'INDUSTRIAL MECHANIC', image: '/assets/workforce/mechanic.webp', fallbackSvg: '/assets/workforce/mechanic.svg', objectPosition: 'center center' },
-  { id: 'electrician', number: '05', label: 'ELECTRICIAN', image: '/assets/workforce/electrician.webp', fallbackSvg: '/assets/workforce/electrician.svg', objectPosition: 'center center' },
-  { id: 'supervisor', number: '06', label: 'SUPERVISOR', image: '/assets/workforce/supervisor.webp', fallbackSvg: '/assets/workforce/supervisor.svg', objectPosition: 'center top' },
+  { id: 'welder', number: '01', label: 'WELDER', image: '/assets/workforce/welder.webp', fallbackSvg: '/assets/workforce/welder.svg', objectPosition: 'center 28%' },
+  { id: 'pipefitter', number: '02', label: 'PIPEFITTER', image: '/assets/workforce/pipefitter.webp', fallbackSvg: '/assets/workforce/pipefitter.svg', objectPosition: 'center 32%' },
+  { id: 'boilermaker', number: '03', label: 'BOILERMAKER', image: '/assets/workforce/boilermaker.webp', fallbackSvg: '/assets/workforce/boilermaker.svg', objectPosition: 'center 30%' },
+  { id: 'mechanic', number: '04', label: 'INDUSTRIAL MECHANIC', image: '/assets/workforce/mechanic.webp', fallbackSvg: '/assets/workforce/mechanic.svg', objectPosition: 'center 35%' },
+  { id: 'electrician', number: '05', label: 'ELECTRICIAN', image: '/assets/workforce/electrician.webp', fallbackSvg: '/assets/workforce/electrician.svg', objectPosition: 'center 28%' },
+  { id: 'supervisor', number: '06', label: 'SUPERVISOR', image: '/assets/workforce/supervisor.webp', fallbackSvg: '/assets/workforce/supervisor.svg', objectPosition: 'center 25%' },
 ]
 
 type RoleData = {

@@ -12,15 +12,16 @@ interface IndustrySectorConfig {
   label: string
   webp: string
   png: string
+  objectPosition?: string
 }
 
 const industrySectors: IndustrySectorConfig[] = [
-  { id: 'oil-gas', number: '01', label: 'OIL & GAS', webp: '/assets/industries/oil-gas.png', png: '/assets/industries/oil-gas.png' },
-  { id: 'petrochemical', number: '02', label: 'PETROCHEMICAL', webp: '/assets/industries/petrochemical.png', png: '/assets/industries/petrochemical.png' },
-  { id: 'refineries', number: '03', label: 'REFINERIES', webp: '/assets/industries/refineries.png', png: '/assets/industries/refineries.png' },
-  { id: 'energy', number: '04', label: 'ENERGY', webp: '/assets/industries/energy.png', png: '/assets/industries/energy.png' },
-  { id: 'shipyards', number: '05', label: 'SHIPYARDS & MARINE', webp: '/assets/industries/shipyards.png', png: '/assets/industries/shipyards.png' },
-  { id: 'construction', number: '06', label: 'INDUSTRIAL CONSTRUCTION', webp: '/assets/industries/industrial-construction.png', png: '/assets/industries/industrial-construction.png' },
+  { id: 'oil-gas', number: '01', label: 'OIL & GAS', webp: '/assets/industries/oil-gas.png', png: '/assets/industries/oil-gas.png', objectPosition: 'center 35%' },
+  { id: 'petrochemical', number: '02', label: 'PETROCHEMICAL', webp: '/assets/industries/petrochemical.png', png: '/assets/industries/petrochemical.png', objectPosition: 'center 40%' },
+  { id: 'refineries', number: '03', label: 'REFINERIES', webp: '/assets/industries/refineries.png', png: '/assets/industries/refineries.png', objectPosition: 'center 35%' },
+  { id: 'energy', number: '04', label: 'ENERGY', webp: '/assets/industries/energy.png', png: '/assets/industries/energy.png', objectPosition: 'center 35%' },
+  { id: 'shipyards', number: '05', label: 'SHIPYARDS & MARINE', webp: '/assets/industries/shipyards.png', png: '/assets/industries/shipyards.png', objectPosition: 'center 30%' },
+  { id: 'construction', number: '06', label: 'INDUSTRIAL CONSTRUCTION', webp: '/assets/industries/industrial-construction.png', png: '/assets/industries/industrial-construction.png', objectPosition: 'center 35%' },
 ]
 
 type SectorData = {
@@ -37,6 +38,7 @@ export function Industries() {
   const pathRef = useRef<SVGPathElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [imageStage, setImageStage] = useState<Record<string, number>>({})
+  const [flamePos, setFlamePos] = useState({ x: 0, y: 200 })
 
   const sectors = t('industries.sectors', { returnObjects: true }) as SectorData[]
   const finalBanner = t('industries.finalBanner', { defaultValue: 'ONE INDUSTRIAL PARTNER. MULTIPLE SECTORS.' })
@@ -77,11 +79,12 @@ export function Industries() {
 
         // Prepare SVG pipeline stroke-dasharray animation
         if (pathRef.current) {
-          const pathLength = pathRef.current.getTotalLength() || 1000
+          const pathLength = pathRef.current.getTotalLength() || 1840
           gsap.set(pathRef.current, {
             strokeDasharray: pathLength,
             strokeDashoffset: pathLength,
           })
+          setFlamePos({ x: 0, y: 200 })
         }
 
         // Single Master Timeline pinned for 6000px of industry sector storytelling
@@ -104,6 +107,17 @@ export function Industries() {
               else if (p < 0.80) idx = 4
               else idx = 5
               setActiveIndex(idx)
+
+              // Track end of active golden line loop & position the stylized golden flame icon marker
+              if (pathRef.current) {
+                const totalLen = pathRef.current.getTotalLength() || 1840
+                const frameProgress = Math.min(1, Math.max(0, p / 0.85))
+                const currentDrawnLen = frameProgress * totalLen
+                const point = pathRef.current.getPointAtLength(currentDrawnLen)
+                if (point) {
+                  setFlamePos({ x: point.x, y: point.y })
+                }
+              }
             },
           },
         })
@@ -299,6 +313,7 @@ export function Industries() {
                             src={imgSrc}
                             alt={s.label}
                             loading="lazy"
+                            style={{ objectPosition: s.objectPosition || 'center 35%' }}
                             onError={() => handleImageError(s.id)}
                           />
                           <div className="ind-media-overlay" />
@@ -352,14 +367,31 @@ export function Industries() {
                     strokeLinejoin="round"
                     style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.7))' }}
                   />
-                  {/* Technical Nodes along exact outer image border */}
-                  <circle cx="-380" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="200" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="0" cy="12" r="4.5" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="250" cy="0" r="4.5" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="500" cy="12" r="4.5" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="500" cy="438" r="4.5" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
-                  <circle cx="12" cy="450" r="4.5" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  {/* Technical Static Nodes along outer image border */}
+                  <circle cx="-380" cy="200" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="200" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="0" cy="12" r="4" fill={activeIndex >= 0 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="250" cy="0" r="4" fill={activeIndex >= 1 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="500" cy="12" r="4" fill={activeIndex >= 2 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="500" cy="438" r="4" fill={activeIndex >= 3 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+                  <circle cx="12" cy="450" r="4" fill={activeIndex >= 4 ? 'var(--accent)' : 'rgba(255,255,255,0.2)'} />
+
+                  {/* Dynamic Golden Luminous Flame Icon Marker terminating/leading the animated path */}
+                  <g
+                    className="ind-flame-marker-head"
+                    transform={`translate(${flamePos.x}, ${flamePos.y})`}
+                  >
+                    {/* Ambient Outer Flame Glow Aura */}
+                    <circle r="12" fill="rgba(255, 180, 43, 0.22)" />
+                    <circle r="6" fill="rgba(255, 180, 43, 0.45)" />
+
+                    {/* Stylized Luminous Brand Flame Vector Icon */}
+                    <path
+                      d="M 0 -9 C 1.4 -4.5 5.5 -2.2 5.5 2.2 C 5.5 5.8 3.1 8 0 8 C -3.1 8 -5.5 5.8 -5.5 2.2 C -5.5 -1.2 -2.8 -5 0 -9 Z M 0 -3.5 C 0.9 -1.5 2.5 0 2.5 2.2 C 2.5 3.6 1.4 4.8 0 4.8 C -1.4 4.8 -2.5 3.6 -2.5 2.2 C -2.5 0.5 -1.2 -1.8 0 -3.5 Z"
+                      fill="var(--accent)"
+                      style={{ filter: 'drop-shadow(0 0 6px rgba(255, 180, 43, 0.95))' }}
+                    />
+                  </g>
                 </svg>
               </div>
             </div>
