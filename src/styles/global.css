@@ -1230,15 +1230,39 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     display: flex;
     justify-content: center;
     align-self: stretch;
-    padding: 4px 0;
+    padding: 38px 0 16px 0;
+    position: relative;
   }
 
   .del-divider-line {
-    width: 1.5px;
+    width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, var(--accent) 0%, rgba(255, 180, 43, 0.15) 100%);
+    background: linear-gradient(180deg, var(--accent) 0%, rgba(255, 180, 43, 0.2) 100%);
     box-shadow: 0 0 8px rgba(255, 180, 43, 0.3);
     border-radius: 2px;
+    position: relative;
+  }
+
+  .del-flame-node {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .del-flame-node.is-active {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .del-flame-slider {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    transition: top 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
   }
 
   .del-right-col {
@@ -2064,6 +2088,15 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
 .contact-link, .contact-value {
   font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.85);
+}
+
+.contact-address {
+  line-height: 1.5;
+}
+
+.contact-address strong {
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .contact-link:hover {

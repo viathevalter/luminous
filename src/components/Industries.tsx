@@ -109,7 +109,7 @@ export function Industries() {
             start: 'top 84px',
             end: '+=6000',
             pin: true,
-            scrub: 0.8,
+            scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
@@ -143,7 +143,7 @@ export function Industries() {
         }
 
         // 0. Intro heading fade-out coexisting with Sector 01 (0.00 to 0.08)
-        masterTl.to('.ind-heading-intro', { opacity: 0.15, y: -15, duration: 0.05 }, 0.02)
+        masterTl.to('.ind-heading-intro', { opacity: 0.15, y: -15, duration: 0.05, ease: 'power2.out' }, 0.02)
 
         // Sectors 0 to 5 (3600px distribution)
         const ranges = [
@@ -158,20 +158,20 @@ export function Industries() {
         ranges.forEach((r, i) => {
           const isFirst = i === 0
           const isLast = i === ranges.length - 1
-          const transitionTime = 0.025
+          const transitionTime = 0.03
 
           // Reveal phase (for Sectors 02 to 06)
           if (!isFirst) {
             masterTl.fromTo(
               `.ind-card-${i}`,
               { opacity: 0, autoAlpha: 0, y: 30 },
-              { opacity: 1, autoAlpha: 1, y: 0, duration: transitionTime },
+              { opacity: 1, autoAlpha: 1, y: 0, duration: transitionTime, ease: 'power2.out' },
               r.start
             )
             masterTl.fromTo(
               `.ind-img-${i}`,
               { opacity: 0, autoAlpha: 0, scale: 1.05, clipPath: 'inset(100% 0 0 0)' },
-              { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)', duration: transitionTime },
+              { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)', duration: transitionTime, ease: 'power2.out' },
               r.start
             )
           }
@@ -179,12 +179,12 @@ export function Industries() {
           // Exit phase (for Sectors 01 to 06)
           masterTl.to(
             `.ind-card-${i}`,
-            { opacity: 0, autoAlpha: 0, y: -20, duration: transitionTime },
+            { opacity: 0, autoAlpha: 0, y: -20, duration: transitionTime, ease: 'power2.out' },
             r.end - transitionTime
           )
           masterTl.to(
             `.ind-img-${i}`,
-            { opacity: isLast ? 1 : 0, autoAlpha: isLast ? 1 : 0, scale: 1.03, duration: transitionTime },
+            { opacity: isLast ? 1 : 0, autoAlpha: isLast ? 1 : 0, scale: 1.03, duration: transitionTime, ease: 'power2.out' },
             r.end - transitionTime
           )
         })

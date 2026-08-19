@@ -48,8 +48,8 @@ export function EuropeanExperience() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.65,
-            ease: 'power2.out',
+            duration: 0.85,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
               start: 'top 85%',

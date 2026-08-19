@@ -70,7 +70,7 @@ export function WorkforceScroll() {
             start: 'top 84px',
             end: '+=6000',
             pin: true,
-            scrub: 0.8,
+            scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
@@ -88,7 +88,7 @@ export function WorkforceScroll() {
         })
 
         // 0. Intro heading fade-out coexisting with Profile 01 (0.00 to 0.08)
-        masterTl.to('.wf-heading-intro', { opacity: 0.1, y: -15, duration: 0.05 }, 0.02)
+        masterTl.to('.wf-heading-intro', { opacity: 0.1, y: -15, duration: 0.05, ease: 'power2.out' }, 0.02)
 
         // Profiles 0 to 5 (3600px distribution)
         const ranges = [
@@ -103,20 +103,20 @@ export function WorkforceScroll() {
         ranges.forEach((r, i) => {
           const isFirst = i === 0
           const isLast = i === ranges.length - 1
-          const transitionTime = 0.025
+          const transitionTime = 0.03
 
           // Reveal phase (for Profiles 02 to 06)
           if (!isFirst) {
             masterTl.fromTo(
               `.wf-card-${i}`,
               { opacity: 0, autoAlpha: 0, y: 30 },
-              { opacity: 1, autoAlpha: 1, y: 0, duration: transitionTime },
+              { opacity: 1, autoAlpha: 1, y: 0, duration: transitionTime, ease: 'power2.out' },
               r.start
             )
             masterTl.fromTo(
               `.wf-img-${i}`,
               { opacity: 0, autoAlpha: 0, scale: 1.05, clipPath: 'inset(100% 0 0 0)' },
-              { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)', duration: transitionTime },
+              { opacity: 1, autoAlpha: 1, scale: 1, clipPath: 'inset(0% 0 0 0)', duration: transitionTime, ease: 'power2.out' },
               r.start
             )
           }
@@ -124,12 +124,12 @@ export function WorkforceScroll() {
           // Exit phase (for Profiles 01 to 06)
           masterTl.to(
             `.wf-card-${i}`,
-            { opacity: 0, autoAlpha: 0, y: -20, duration: transitionTime },
+            { opacity: 0, autoAlpha: 0, y: -20, duration: transitionTime, ease: 'power2.out' },
             r.end - transitionTime
           )
           masterTl.to(
             `.wf-img-${i}`,
-            { opacity: isLast ? 1 : 0, autoAlpha: isLast ? 1 : 0, scale: 1.03, duration: transitionTime },
+            { opacity: isLast ? 1 : 0, autoAlpha: isLast ? 1 : 0, scale: 1.03, duration: transitionTime, ease: 'power2.out' },
             r.end - transitionTime
           )
         })

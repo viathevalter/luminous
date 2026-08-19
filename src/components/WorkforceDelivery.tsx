@@ -50,7 +50,7 @@ export function WorkforceDelivery() {
             start: 'top 84px',
             end: '+=2400',
             pin: true,
-            scrub: 0.5,
+            scrub: 0.85,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
@@ -66,10 +66,10 @@ export function WorkforceDelivery() {
         steps.forEach((_, i) => {
           const startR = (i / total) * 0.9
           if (i > 0) {
-            masterTl.to(`.del-step-${i}`, { opacity: 1, autoAlpha: 1, duration: 0.1 }, startR)
+            masterTl.to(`.del-step-${i}`, { opacity: 1, autoAlpha: 1, duration: 0.12, ease: 'power2.out' }, startR)
           }
           if (i < total - 1) {
-            masterTl.to(`.del-step-${i}`, { opacity: 0.45, duration: 0.1 }, startR + 0.14)
+            masterTl.to(`.del-step-${i}`, { opacity: 0.45, duration: 0.12, ease: 'power2.out' }, startR + 0.14)
           }
         })
       })
@@ -137,9 +137,57 @@ export function WorkforceDelivery() {
               </div>
             </div>
 
-            {/* Column 2: Center Golden Vertical Divider */}
+            {/* Column 2: Center Golden Vertical Divider with Luminous Flame Icon */}
             <div className="del-center-divider" aria-hidden="true">
-              <div className="del-divider-line" />
+              <div className="del-divider-line">
+                {/* 6 Step Flame Nodes along the vertical golden line */}
+                {Array.from({ length: steps.length || 6 }).map((_, idx) => {
+                  const isNodeActive = idx === activeStepIndex
+                  return (
+                    <div
+                      key={idx}
+                      className={`del-flame-node ${isNodeActive ? 'is-active' : ''}`}
+                      style={{ top: `${(idx / ((steps.length || 6) - 1)) * 100}%` }}
+                    >
+                      <svg width="20" height="24" viewBox="-5 -8 10 16" fill="none">
+                        <path
+                          d="M 0 -6.5 C 0.6 -4.2 3.6 -2 3.6 1.8 C 3.6 4.2 2 5.8 0 5.8 C -2 5.8 -3.6 4.2 -3.6 1.8 C -3.6 -1 1.6 -4.2 0 -6.5 Z"
+                          fill={isNodeActive ? 'var(--accent)' : 'rgba(255, 180, 43, 0.35)'}
+                          style={
+                            isNodeActive
+                              ? { filter: 'drop-shadow(0 0 8px rgba(255, 180, 43, 0.95))' }
+                              : undefined
+                          }
+                        />
+                        <path
+                          d="M 0 -2.4 C 0.4 -1 1.4 0 1.4 1.5 C 1.4 2.5 0.8 3.2 0 3.2 C -0.8 3.2 -1.4 2.5 -1.4 1.5 C -1.4 0.4 -0.5 -1.1 0 -2.4 Z"
+                          fill="#040c17"
+                        />
+                      </svg>
+                    </div>
+                  )
+                })}
+
+                {/* Smooth Sliding Luminous Flame Marker traveling along the line */}
+                <div
+                  className="del-flame-slider"
+                  style={{
+                    top: `${(activeStepIndex / ((steps.length || 6) - 1)) * 100}%`,
+                  }}
+                >
+                  <svg width="22" height="26" viewBox="-5 -8 10 16" fill="none">
+                    <path
+                      d="M 0 -6.5 C 0.6 -4.2 3.6 -2 3.6 1.8 C 3.6 4.2 2 5.8 0 5.8 C -2 5.8 -3.6 4.2 -3.6 1.8 C -3.6 -1 1.6 -4.2 0 -6.5 Z"
+                      fill="var(--accent)"
+                      style={{ filter: 'drop-shadow(0 0 10px rgba(255, 180, 43, 1))' }}
+                    />
+                    <path
+                      d="M 0 -2.4 C 0.4 -1 1.4 0 1.4 1.5 C 1.4 2.5 0.8 3.2 0 3.2 C -0.8 3.2 -1.4 2.5 -1.4 1.5 C -1.4 0.4 -0.5 -1.1 0 -2.4 Z"
+                      fill="#040c17"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             {/* Column 3: Right Connected 6-Step Process Flow */}

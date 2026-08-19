@@ -51,33 +51,33 @@ export function HeroScroll() {
             start: 'top top',
             end: endDistance,
             pin: true,
-            scrub: 0.8,
+            scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         })
 
         // Background subtle poster scale
-        tl.to('.hero-media', { scale: 1.08, duration: 1 }, 0)
+        tl.to('.hero-media', { scale: 1.08, duration: 1, ease: 'sine.out' }, 0)
 
         // Estado 0: Intro Copy & Scroll Cue (0.00 to 0.12) -> fade out cleanly
-        tl.to(introRef.current, { opacity: 0, autoAlpha: 0, y: -35, duration: 0.08 }, 0.04)
-        tl.to('.scroll-cue', { opacity: 0, autoAlpha: 0, duration: 0.06 }, 0.02)
+        tl.to(introRef.current, { opacity: 0, autoAlpha: 0, y: -35, duration: 0.08, ease: 'power2.out' }, 0.04)
+        tl.to('.scroll-cue', { opacity: 0, autoAlpha: 0, duration: 0.06, ease: 'power2.out' }, 0.02)
 
         // Estado 1: Beat 1 (AS PESSOAS CERTAS) (0.14 to 0.34)
-        tl.fromTo('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.05 }, 0.14)
-        tl.to('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.05 }, 0.30)
+        tl.fromTo('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06, ease: 'power2.out' }, 0.14)
+        tl.to('.hero-beat--1', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.06, ease: 'power2.out' }, 0.30)
 
         // Estado 2: Beat 2 (AS COMPETÊNCIAS CERTAS) (0.36 to 0.56)
-        tl.fromTo('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.05 }, 0.36)
-        tl.to('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.05 }, 0.52)
+        tl.fromTo('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06, ease: 'power2.out' }, 0.36)
+        tl.to('.hero-beat--2', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.06, ease: 'power2.out' }, 0.52)
 
         // Estado 3: Beat 3 (A EXPERIÊNCIA CERTA) (0.58 to 0.78)
-        tl.fromTo('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.05 }, 0.58)
-        tl.to('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.05 }, 0.74)
+        tl.fromTo('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06, ease: 'power2.out' }, 0.58)
+        tl.to('.hero-beat--3', { opacity: 0, autoAlpha: 0, y: -25, duration: 0.06, ease: 'power2.out' }, 0.74)
 
         // Estado 4: Beat 4 Final Message + Subtitle (0.80 to 1.00) - stays visible until section unpins
-        tl.fromTo('.hero-beat--4', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.06 }, 0.80)
+        tl.fromTo('.hero-beat--4', { opacity: 0, autoAlpha: 0, y: 35 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.07, ease: 'power2.out' }, 0.80)
       })
 
       return () => mm.revert()
