@@ -98,7 +98,6 @@ export function Footer() {
             <div className="footer-contact-item">
               <span className="contact-label">{t('footer.addressLabel', { defaultValue: 'HEADQUARTERS' })}</span>
               <span className="contact-value contact-address">
-                <strong>LUMINOUS ALLEY, UNIPESSOAL LDA</strong><br />
                 Rua Padre António Maria Pinho, n.º 202<br />
                 3860-383 Estarreja, Portugal
               </span>
