@@ -1284,6 +1284,20 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     transform: translateX(4px);
   }
 
+  /* Single Continuous Golden Vertical Line from Flame 01 to Flame 06 */
+  .del-continuous-line {
+    position: absolute;
+    left: 12px;
+    transform: translateX(-50%);
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, rgba(255, 180, 43, 0.4) 100%);
+    box-shadow: 0 0 6px rgba(255, 180, 43, 0.4);
+    z-index: 1;
+    border-radius: 1px;
+  }
+
   /* Golden Track & Flame Node per Step */
   .del-flame-track {
     display: flex;
@@ -1293,26 +1307,6 @@ p { color: var(--color-text-muted); line-height: 1.7; font-family: var(--font-sa
     width: 24px;
     flex-shrink: 0;
     align-self: stretch;
-  }
-
-  .del-track-line {
-    position: absolute;
-    width: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, var(--accent) 0%, rgba(255, 180, 43, 0.3) 100%);
-    box-shadow: 0 0 6px rgba(255, 180, 43, 0.4);
-    z-index: 1;
-  }
-
-  .del-track-line-top {
-    top: -16px;
-    height: 29px;
-  }
-
-  .del-track-line-bottom {
-    top: 13px;
-    bottom: 0;
   }
 
   .del-flame-icon-wrap {

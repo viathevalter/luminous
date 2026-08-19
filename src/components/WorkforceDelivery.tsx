@@ -149,6 +149,9 @@ export function WorkforceDelivery() {
               </div>
 
               <div className="del-steps-list">
+                {/* Single Continuous Golden Vertical Line from Flame 01 to Flame 06 */}
+                <div className="del-continuous-line" aria-hidden="true" />
+
                 {Array.isArray(steps) &&
                   steps.map((step, i) => {
                     const isActive = i === activeStepIndex
@@ -160,11 +163,8 @@ export function WorkforceDelivery() {
                           isCompleted ? 'is-completed' : ''
                         }`}
                       >
-                        {/* Vertical Golden Track: Line Starts at Step 01 and Ends at Step 06 */}
+                        {/* Vertical Flame Track */}
                         <div className="del-flame-track" aria-hidden="true">
-                          {/* Line segment coming from previous step (steps 02 to 06) */}
-                          {i > 0 && <div className="del-track-line del-track-line-top" />}
-
                           {/* Flame Icon Node horizontally aligned with step number badge */}
                           <div className={`del-flame-icon-wrap ${isActive ? 'is-active' : ''}`}>
                             <svg width="22" height="26" viewBox="-5 -8 10 16" fill="none">
@@ -183,11 +183,6 @@ export function WorkforceDelivery() {
                               />
                             </svg>
                           </div>
-
-                          {/* Line segment going down to next step (steps 01 to 05) */}
-                          {i < (steps.length || 6) - 1 && (
-                            <div className="del-track-line del-track-line-bottom" />
-                          )}
                         </div>
 
                         {/* Step Number Badge */}
